@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="{{ STATIC_URL}}themes/default/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{STATIC_URL}}themes/pascal/pascal.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{STATIC_URL}}themes/orman/orman.css" type="text/css" media="screen" />
+
+    		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/superfish.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/superfish-vertical.css" media="screen">
+        
+    <link href="{{ STATIC_URL }}css/nivo-slider.css" rel="stylesheet" type="text/css" />
+<script src="{{ STATIC_URL }}js/jquery.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+		<script type="text/javascript" src="{{ STATIC_URL }}js/superfish/superfish.js"></script>
+<!-- <script src="{{ STATIC_URL }}js/sidemenu.js" type="text/javascript"></script>
+         <link rel="stylesheet" href="{{STATIC_URL}}css/side    .css" type="text/css" media="screen" />
+ -->
+<style>
+#container img {
+    width : 100% ;
+    height : 250px;
+}
+.nivoSlider {
+    position:relative;
+    width:960px; /* Change this to your images width */
+    height:240px; /* Change this to your images height */
+    background:url({{STATIC_URL}}images/loading.gif) no-repeat 50% 50%;
+}
+.nivoSlider img {
+    position:absolute;
+    top:0px;
+    left:0px;
+    display:none;
+}
+.nivoSlider a {
+    border:0;
+    display:block;
+}
+.nivo-caption A:link {text-decoration: none}
+.nivo-caption A:visited {text-decoration: none}
+.nivo-caption A:active {text-decoration: none}
+.nivo-caption A:hover {font-size:24; font-weight:bold; color: red;}
+.nivo-caption{
+height : 80px;
+}
+.nivo-caption .slider_header{
+margin-bottom : 5px;
+padding : 6px;
+font-size : 300%;
+color : #0094FF;
+}
+.nivo-caption .slider_description{
+font-size : 140%;
+}
+.addthis_toolbox , addthis_default_style at-floatingbar-share {
+   position: absolute;
+    right: 10%;
+    padding: 0px 0px 0px 10px;
+}   
+.ym-form p{
+margin : 10px;
+padding :10px;
+height : 20px;
+}
+.ym-form input[type="text"] , .ym-form select  , .ym-form input[type="password"] 
+{
+    width: 50%;
+    height: 20px;
+    float : left;
+}
+.ym-form input[type="submit"]
+{
+    width: 50%;
+    float : left;
+    height: 30px;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+.plugin_video  , .plugin_twitter {
+   margin-bottom: 15px;
+}
+ 
+</style>
+
+   <script type="text/javascript">
+   
+
+        jQuery(function(){
+			jQuery('ul.sf-menu').superfish();
+		});
+        
+          $(window).load(function() {
+    $('#slider').nivoSlider({
+        effect: 'random', // Specify sets like: 'fold,fade,sliceDown'
+        slices: 5, // For slice animations
+        boxCols: 8, // For box animations
+        boxRows: 4, // For box animations
+        animSpeed: 500, // Slide transition speed
+        pauseTime: 4000, // How long each slide will show
+        startSlide: 0, // Set starting Slide (0 index)
+        directionNav: true, // Next & Prev navigation
+        directionNavHide: true, // Only show on hover
+        controlNav: false, // 1,2,3... navigation
+        controlNavThumbs: false, // Use thumbnails for Control Nav
+        controlNavThumbsFromRel: false, // Use image rel for thumbs
+        controlNavThumbsSearch: '.jpg', // Replace this with...
+        controlNavThumbsReplace: '_thumb.jpg', // ...this in thumb Image src
+        keyboardNav: true, // Use left & right arrows
+        pauseOnHover: true, // Stop animation while hovering
+        manualAdvance: false, // Force manual transitions
+        captionOpacity: 0.5, // Universal caption opacity
+        prevText: 'Prev', // Prev directionNav text
+        nextText: 'Next', // Next directionNav text
+        randomStart: false, // Start on a random slide
+        beforeChange: function(){}, // Triggers before a slide transition
+        afterChange: function(){}, // Triggers after a slide transition
+        slideshowEnd: function(){}, // Triggers after all slides have been shown
+        lastSlide: function(){}, // Triggers when last slide is shown
+        afterLoad: function(){} // Triggers when slider has loaded
+    });
+});
+
+    </script>
+    
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4efb544f232e1507">
+
+
+
+function autoReload(){
+  if (window.name=='autoreload') {
+     location.reload();
+     window.name='';
+  }
+}
+
+</script>
+{% load thumbnail%}
+
+{% block head%}
+{% endblock head%}
+</head>
+  <body dir="rtl" id="{% block tpl_id %}none{% endblock %}" class="{{ LANGUAGE_CODE }}"  onload="autoReload()">
+<!-- AddThis Button BEGIN -->
+<div class="addthis_bar addthis_bar_vertical addthis_bar_large" style="top:50px;float: right ;">
+    <div class="addthis_toolbox addthis_default_style">
+        <span><a class="addthis_button_facebook_like" fb:like:layout="box_count"></a></span>
+        <span><a class="addthis_button_tweet" tw:count="vertical"></a></span>
+        <span><a class="addthis_button_google_plusone" g:plusone:size="tall"></a></span>
+        <span><a class="addthis_counter"></a></span>
+    </div>
+</div>
+<!-- AddThis Button END -->
+  
+<div class="tail-top">
+  <div class="tail-bottom">
+    <!-- HEADER -->
+    <div id="header">
+
+      <ul class="site-nav">
+        <li><a href="/accounts/signin/">تسجيل الدخول</a></li>
+       <li><a href="/accounts/signup/"> مستخدم جديد</a></li>
+       {% if user.is_authenticated %}
+        <li><a href="/ar/accounts/{{request.user.username}}"  > الملف الشخصى </a></li>
+        {% endif %}
+        <li><a href="/events/events">المؤتمرات القادمة</a></li>
+        <li class="last"><a href="/">الرئيسية</a></li>
+
+           
+              {% block navbar %}
+              {% endblock navbar %}
+              
+      </ul>
+
+           <!-- start -->
+        <div id="container" style="width:960px; position: absolute;top: 100px;right: 2% ; max-height: 100px;"   >
+        
+            {% block hero%}
+         <div class="slider-wrapper theme-default">
+
+<!--<img src="{{ STATIC_URL }}img/new-ribbon.png" width="112" height="112" alt="New Ribbon" id="ribbon"> -->	
+        <div id="slider" class="nivoSlider"> 
+            {% for instance in LatestFeaturedNews %}
+                <div class="slide">
+                    <img src="{% thumbnail instance.image 1050x250 %}" alt=""  title  ="#htmlcaption{{instance.id}}"   /> </a>
+                </div>
+            {% endfor%} 
+        </div>
+         {% for instance in LatestFeaturedNews %}
+          <div id="htmlcaption{{instance.id}}" class="nivo-html-caption">
+            <a href="{{instance.link}}" > <div class="slider_header" > {{instance.header}}  </div></a>
+           <div class="slider_description" >  {{  instance.shortDescription}}  </div>
+        </div>
+        {% endfor %}
+</div>
+            {% endblock hero%}
+      </div>
+    </div>
+    <!-- end --> 
+  
+    <!-- CONTENT -->
+    <div id="content">
+      <div class="inner_copy">More <a href="#"> Khalifa  designs</a> </div>
+      <div class="indent">
+        <div class="wrapper">
+        
+<div class="col-1">
+            <div class="box1">
+              <div class="top">
+                <div class="bot"><div class="inner" style="margin:5px ; padding : 5px 10px 20px 4px;">{%block left-col%}
+                <h3>احدث الأخبار-</h3>
+                <ul class="">{% for instance in LatestNews %}
+                
+                            
+                 <li>  <b><a href="{{instance.link}}" > {{instance.header}}  </a></b>{{  instance.shortDescription}}   </li>
+                    
+                    
+                {% endfor %}
+                </ul>
+
+            {%endblock left-col%}</div></div>
+              </div>
+            </div>
+            
+            <br/>
+            
+            <div class="">
+          
+              <div class="top">
+            
+                <div class="bot">
+                
+                
+       
+       
+       
+                   {%block left-col-2%}
+                {%endblock left-col-2%}
+               
+      <!--             <div class="inner">
+                  
+                         
+                  </div> -->
+                </div>
+              </div>
+            </div>
+            
+</div>
+<div class="col-2">
+            <div class="box3">
+          {%block center-col%}{%endblock center-col%}
+
+            </div>
+            
+<br />
+ 
+   <div class="box3">{% block col-center-2%}{% endblock col-center-2%}</div>
+           
+
+
+    <br/> <br/>
+   <!--   <form id="contacts-form" action="#">
+                <fieldset>
+                  <div class="field">
+                    <label>: الاسـم</label>
+                    <input type="text" value=""/>
+                  </div>
+                  <div class="field">
+                    <label>: المجـال</label>
+                    <input type="text" value=""/>
+                  </div>
+                  <div class="field">
+                    <label>: الموقع</label>
+                    <input type="text" value=""/>
+                  </div>
+                  <div>
+                    <label>: الرسالة</label>
+                    <textarea cols="1" rows="1"></textarea>
+                  </div>
+                  <div class="alignleft"><a href="#"><strong>قم بارسال الرساله</strong></a></div>
+                </fieldset>
+              </form> -->
+</div>
+          <div class="col-3">
+
+            <div class="box1">
+              <div class="top">
+                
+                        
+                <div class="bot">
+                    
+                  <div class="inner" style="margin:5px ; padding : 5px 10px 20px 4px;">
+                      {%block right-col%}
+                      
+<h3>احدث المؤتمرات</h3>
+<ul>
+{% for event in LatestEvents %}
+
+<li>
+
+              <b>  
+                    <a href="{{ event.get_absolute_url }}">
+                                {{ event.title|upper }}
+                      </a>
+                 </b>
+     
+    {{ event.short_description}} <br/>
+    {{event.start_time|date:"d M " }} 
+</li>
+{% endfor %}
+</ul>
+     {%endblock right-col%}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+                   <div class="form-box">
+              <div class="top">
+                <div class="bot">
+                
+                           
+                <div class="inner">
+
+                   
+                         {%block right-col-2%}
+                    {%endblock right-col-2%}
+                  
+                     </div>
+                </div>
+              </div>
+            </div>
+            <br/>
+            
+           <div class="form-box">
+              <div class="top">
+                <div class="bot">
+                
+                           
+                <div class="inner">
+                      <h3>القائمة </h3>
+                    <style>
+                    .menu span {
+                        display : none ;
+                    }
+                    </style>
+                 
+                    <ul class="sf-menu sf-vertical">
+                  
+                 
+                                  </ul>
+                  
+                                 </div>
+                </div>
+              </div>
+            </div>
+            
+            <br/>
+            
+            <div style="margin-left:15px; margin-right:15px; margin-top:-5px;">
+          <a href="https://www.facebook.com/groups/260277970700333/" > <img src="{{ STATIC_URL }}img/f.png" alt="" width="40" height="40" /></a>
+          <a href="#" > <img src="{{ STATIC_URL }}img/t.png" alt="" width="40" height="40" /></a>
+          <a href="http://www.youtube.com/user/ummahwahda?feature=watch" > <img src="{{ STATIC_URL }}img/y.png" alt="" width="40" height="40" /></a>
+          <a href="#" > <img src="{{ STATIC_URL }}img/rss.png" alt="" width="40" height="40" /></a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <div id="footer">
+      <p>جميع الحقوق محفوظة - منسيقة العمل الاسلامي &nbsp; &nbsp;|| &nbsp; &nbsp;
+      Designed by &nbsp;<a target="_blank" href="http://eng-khalifa.deviantart.com">A-Khalifa</a>
+      , Developed by <a href="#">ahmed</a></p>
+    </div>
+  </div>
+</div>
+
+</body>
+
+
+</html>
+

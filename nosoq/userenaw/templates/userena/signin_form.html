@@ -1,0 +1,31 @@
+
+{% extends 'index.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Signin" %}{% endblock %}
+
+{% block center-col %}
+<form class="ym-form" action="" method="post">
+  {% csrf_token %}
+
+    {{ form.non_field_errors }}
+    {% for field in form %}
+    {{ field.errors }}
+    {% comment %} Displaying checkboxes differently {% endcomment %}
+    {% if field.name == 'remember_me' %}
+   <div style<div class="ym-fbox-check">
+   {{ field }} 
+  {{ field.label }} 
+  </div>
+    {% else %}
+    <p>
+    {{ field.label_tag }} 
+    {{ field }}
+    </p>
+    {% endif %}
+    {% endfor %}
+    
+  <input type="submit" value="{% trans "Signin" %}" />
+  <p class="forgot-password"><a href="{% url userena_password_reset %}" title="{% trans "Forgot your password?" %}">{% trans "Forgot your password?" %}</a></p>
+</form>
+{% endblock %}

@@ -1,0 +1,34 @@
+﻿{% extends 'index.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{%block head%}
+{%endblock head%}
+
+{%block hero%}
+ <h1>سجل الآن</h1>
+{%endblock hero%}
+{% block center-col %}
+
+
+<form class="ym-form" action="" method="post">
+  {% csrf_token %}
+    {% for field in form %}
+    {{ field.errors }}
+    {% comment %} Displaying checkboxes differently {% endcomment %}
+    {% if field.name == 'tos' %}
+    <p class="checkbox">
+    <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
+    </p>
+    {% else %}
+    <p>
+    {{ field.label_tag }} 
+    {{ field }}
+    </p>
+    {% endif %}
+    {% endfor %}
+
+  <input type="submit" value="{% trans "Signup"%}" />
+</form>
+{% endblock %}
