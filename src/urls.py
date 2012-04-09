@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 from userena import views as userena_views
 from userena.forms import mSignupForm
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -22,8 +22,9 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 
-        url(r'$',
+        url(r'^$',
     userena_views.signup,
     {'signup_form': mSignupForm}),
     
     )
+urlpatterns += staticfiles_urlpatterns()

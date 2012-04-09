@@ -10,8 +10,7 @@
  <h1>سجل الآن</h1>
 {%endblock hero%}
 {% block center-col %}
-
-
+<link rel='stylesheet' href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
 <form class="ym-form" action="" method="post">
   {% csrf_token %}
     {% for field in form %}
