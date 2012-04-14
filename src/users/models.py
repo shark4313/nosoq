@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 
 class Country(models.Model):
-    name =models.CharField(_('Name'),  max_length=30 , default= "Egypt")
+    name = models.CharField(_('Name'),  max_length=30 , default= "Egypt")
     class Meta:
         verbose_name        = _('Country')
         verbose_name_plural = _('Countries')
@@ -38,22 +38,22 @@ class Media(models.Model):
         verbose_name_plural = _('Media Items')
 
 class Notification(models.Model):
-    message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
     address = models.CharField(max_length=255, db_index=True)
+    message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
     time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
 
-class News(models.Model):
-    media =  models.ManyToManyField("Media" , blank=True)
-    header = models.CharField(_("Header") , max_length=255 , blank=True , null= True)
-    description = models.TextField(_("short description"), max_length=255, blank=True, null=True, help_text=_("short description of the image"))
-    pub_date    = models.DateTimeField(_("Created in"),help_text=_("Created in") , default = datetime.now() , editable = False)
-    
-    def __unicode__(self):
-        return self.header
-    
-    class Meta:
-        verbose_name = _('News')
-        verbose_name_plural = _('News')
+#class News(models.Model):
+#    media =  models.ManyToManyField("Media" , blank=True)
+#    header = models.CharField(_("Header") , max_length=255 , blank=True , null= True)
+#    description = models.TextField(_("short description"), max_length=255, blank=True, null=True, help_text=_("short description of the image"))
+#    pub_date    = models.DateTimeField(_("Created in"),help_text=_("Created in") , default = datetime.now() , editable = False)
+#    
+#    def __unicode__(self):
+#        return self.header
+#    
+#    class Meta:
+#        verbose_name = _('News')
+#        verbose_name_plural = _('News')
 
         
 class UserProfile(UserenaBaseProfile):

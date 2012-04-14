@@ -170,7 +170,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fluent_dashboard',
+#    'fluent_dashboard',
     'admin_tools',     # for staticfiles in Django 1.3
     'admin_tools.theming',
     'admin_tools.menu',
@@ -186,6 +186,8 @@ INSTALLED_APPS = (
     "users",
      'easy_thumbnails',
     'guardian',
+    'test_utils',
+    'news',
     
 )
 
