@@ -53,15 +53,6 @@ def rpc_handler(request):
 
         response['Content-length'] = str(len(response.content))
         return response
-
-
-def multiply(a, b):
-        """
-        Multiplication is fun!
-        Takes two arguments, which are multiplied together.
-        Returns the result of the multiplication!
-        """
-        return a*b
     
 
 def get_news():
