@@ -41,35 +41,48 @@ def rpc_handler(request):
                         # right now, my version of SimpleXMLRPCDispatcher always
                         # returns "signatures not supported"... :(
                         # but, in an ideal world it will tell users what args are expected
-                        sig = dispatcher.system_methodSignature(method)
+#                        sig = dispatcher.system_methodSignature(method)
 
                         # this just reads your docblock, so fill it in!
                         help =  dispatcher.system_methodHelp(method)
 
-                        response.write("<li><b>%s</b>: [%s] %s" % (method, sig, help))
+                        response.write("<li><b>%s</b>: %s" % (method, help))
 
                 response.write("</ul>")
-                response.write('<a href="http://www.djangoproject.com/"> <img src="http://media.djangoproject.com/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django."></a>')
+#                response.write('<a href="http://www.djangoproject.com/"> <img src="http://media.djangoproject.com/img/badges/djangomade124x25_grey.gif" border="0" alt="Made with Django." title="Made with Django."></a>')
 
         response['Content-length'] = str(len(response.content))
         return response
     
 
-def get_news(token):
-    news = News.objects.all()
+def get_news_by_id(token, id):
+    ''' params (token, id) '''
+    try:
+        news_item = News.objects.get(id=id)
+        return news_item
+#        from django.forms.models import model_to_dict
+#        news_item = model_to_dict(news_item)
+    except News.DoesNotExist:
+        return 'no such piece of news'
+
+
+def get_news_by_date(token, after_date):
+    ''' params (token, after_date) '''
+    from datetime import date
+    after_date = date(after_date[0], after_date[1], after_date[2])
+    news = News.objects.filter(date__gte=after_date)
     if news:
         from django.forms.models import model_to_dict
         reformed_news = []
-        for newsItem in news:
-            newsItem = model_to_dict(newsItem)
-            newsItem.pop('id')
-            reformed_news.append(newsItem)
+        for news_item in news:
+            news_item = model_to_dict(news_item)
+            news_item.pop('id')
+            reformed_news.append(news_item)
         return reformed_news
     else:
-        return 'no more news' 
+        return 'no notifications after this date'
 # you have to manually register all functions that are xml-rpc-able with the dispatcher
 # the dispatcher then maps the args down.
 # The first argument is the actual method, the second is what to call it from the XML-RPC side...
-dispatcher.register_function(get_news, 'get_news')
-#dispatcher.register_function(multiply, 'multiply')
-
+dispatcher.register_function(get_news_by_date, 'get_news_by_date')
+dispatcher.register_function(get_news_by_id, 'get_news_by_id')
