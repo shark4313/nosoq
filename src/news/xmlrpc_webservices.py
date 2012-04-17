@@ -55,7 +55,7 @@ def rpc_handler(request):
         return response
     
 
-def get_news():
+def get_news(token):
     news = News.objects.all()
     if news:
         from django.forms.models import model_to_dict

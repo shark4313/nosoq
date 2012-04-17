@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', userena_views.signup, {'signup_form': mSignupForm}),
     url(r'^news/', include('news.urls')),
-    url(r'^notifications/xmlrpc/$', 'users.xmlrpc_webservices.xmlrpc_handler')
+    url(r'^users/xmlrpc/$', 'users.xmlrpc_webservices.xmlrpc_handler')
     )
 
 urlpatterns += staticfiles_urlpatterns()

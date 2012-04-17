@@ -13,7 +13,7 @@ class XMLRPC(object):
         self.request = request
     
 
-    def get_notifications(self):
+    def get_notifications(self, token):
         notifications = Notification.objects.all()
         if notifications:
             from django.forms.models import model_to_dict
@@ -39,11 +39,7 @@ class XMLRPC(object):
         s = Session.objects.get(session_key=token)
         id = s.get_decoded()['_auth_user_id']
         return id
-
-    def handle_request(self, token):
-        self.request.session.session_key = token
-        return self.request.user
-
+    
 
 dispatchers = {}
 
