@@ -174,7 +174,7 @@ INSTALLED_APPS = (
     'admin_tools',     # for staticfiles in Django 1.3
     'admin_tools.theming',
     'admin_tools.menu',
-    'admin_tools.dashboard',
+#    'admin_tools.dashboard',
     'django.contrib.admin',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
@@ -184,7 +184,7 @@ INSTALLED_APPS = (
     "debug_toolbar",
     "django_extensions",    
     "users",
-     'easy_thumbnails',
+    'easy_thumbnails',
     'guardian',
     'test_utils',
     'news',

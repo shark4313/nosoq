@@ -11,7 +11,8 @@ class XMLRPC(object):
     
     def __init__(self, request):
         self.request = request
-        
+    
+
     def get_notifications(self):
         notifications = Notification.objects.all()
         if notifications:
@@ -24,7 +25,24 @@ class XMLRPC(object):
             return reformed_notifications
         else:
             return 'no more notifications'
-    
+
+    def login(self, username, password):
+#        if self.request.session.test_cookie_worked():
+#            return 'it is working'
+        user = auth.authenticate(username=username, password=password)
+        if user: auth.login(self.request, user) 
+        else: return 'username or password is wrong'
+#        SESSION_KEY = '_auth_user_id'
+        return self.request.session.session_key
+
+    def get_id_from_session(self, token):
+        s = Session.objects.get(session_key=token)
+        id = s.get_decoded()['_auth_user_id']
+        return id
+
+    def handle_request(self, token):
+        self.request.session.session_key = token
+        return self.request.user
 
 
 dispatchers = {}

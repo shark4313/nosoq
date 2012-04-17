@@ -71,5 +71,5 @@ def get_news():
 # the dispatcher then maps the args down.
 # The first argument is the actual method, the second is what to call it from the XML-RPC side...
 dispatcher.register_function(get_news, 'get_news')
-dispatcher.register_function(multiply, 'multiply')
+#dispatcher.register_function(multiply, 'multiply')
 
