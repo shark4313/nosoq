@@ -65,7 +65,7 @@ def multiply(a, b):
         return int(a) * int(b) 
     
 
-def get_news_by_id(token, id):
+def get_news_by_id(token=None, id):
     ''' params (token, id) '''
     try:
         news_item = News.objects.get(id=id)
@@ -76,7 +76,7 @@ def get_news_by_id(token, id):
         return 'no such piece of news'
 
 
-def get_news_by_date(token, after_date):
+def get_news_by_date(token=None, after_date):
     ''' params (token, after_date) '''
     from datetime import date
     after_date = date(after_date[0], after_date[1], after_date[2])
