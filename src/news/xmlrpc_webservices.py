@@ -55,7 +55,7 @@ def rpc_handler(request):
         return response
     
 
-def get_news_by_id(token=None, id):
+def get_news_by_id(id , token=None ):
     ''' params (token, id) '''
     try:
         news_item = News.objects.get(id=id)
@@ -66,7 +66,7 @@ def get_news_by_id(token=None, id):
         return 'no such piece of news'
 
 
-def get_news_by_date(token=None, after_date):
+def get_news_by_date( after_date,  token=None):
     ''' params (token, after_date) '''
     from datetime import date
     after_date = date(after_date[0], after_date[1], after_date[2])
