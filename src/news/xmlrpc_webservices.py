@@ -98,7 +98,6 @@ def get_news_by_location(lon, lat, delta):
     else:
         return 'no more news in this area'
 
-
 def get_news_by_date(after_date, token=None):
     ''' params (token, after_date) '''
     from datetime import date
