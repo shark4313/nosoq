@@ -6,13 +6,11 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.sessions.backends.db import Session
 from models import Notification
+from django.contrib.auth.decorators import login_required
 
 class XMLRPC(object):
     
-    def __init__(self, request):
-        self.request = request
     
-
     def get_notifications_by_id(self, id, token=None):
         ''' params (token : String, id : integer) '''
         try:
@@ -41,6 +39,7 @@ class XMLRPC(object):
 
 
     def get_notifications_by_location(self, lon, lat, delta):
+        ''' params (lon, lat, delta) '''
         notifications = Notification.objects.filter(lon__gt=(lon - delta))
         notifications = notifications.filter(lat__gt=(lat - delta))
         notifications = notifications.filter(lon__lt=(lon + delta))
@@ -55,29 +54,31 @@ class XMLRPC(object):
             return reformed_notifications
         else:
             return 'no notifications in this area'
-        
+            
 
-    def login(self, username, password):
-        ''' params (username, password) '''
-        user = auth.authenticate(username=username, password=password)
-        if user: auth.login(self.request, user) 
-        else: return 'username or password is wrong'
-        return self.request.session.session_key
+def get_id_from_session(token):
+    try:
+        s = Session.objects.get(session_key=token)
+        id = s.get_decoded()['_auth_user_id']
+        return id
+    except Session.DoesNotExist:
+        return False
 
     
-def get_id_from_session(self, token):
-    s = Session.objects.get(session_key=token)
-    id = s.get_decoded()['_auth_user_id']
-    return id
-
 dispatchers = {}
-
 @csrf_exempt
-def xmlrpc_handler(request):
+def xmlrpc_handler(request, token=None):
     dispatcher = SimpleXMLRPCDispatcher(encoding=u'UTF-8', allow_none=True)
-    dispatcher.register_instance(XMLRPC(request))
+    dispatcher.register_instance(XMLRPC())
     if len(request.POST):
-        return HttpResponse(dispatcher._marshaled_dispatch(request.raw_post_data))
+        id = get_id_from_session(token)
+        if id:
+            return HttpResponse(dispatcher._marshaled_dispatch(request.raw_post_data))
+        else:
+            import xmlrpclib
+            msg = ('token is invalid',)
+            msg = xmlrpclib.dumps(msg, methodresponse=1, allow_none=False, encoding=u'UTF-8')
+            return HttpResponse(msg)
     else:
         response = HttpResponse()
         response.write("<b>This is an XML-RPC Service.</b><br>")
@@ -102,6 +103,24 @@ def xmlrpc_handler(request):
         return response
 
 
+class Authentication(object):
+    def __init__(self, request):
+        self.request = request
+
+    def login(self, username, password):
+        ''' params (username, password) '''
+        user = auth.authenticate(username=username, password=password)
+        if user: auth.login(self.request, user) 
+        else: return 'username or password is wrong'
+        return self.request.session.session_key
+
+
+@csrf_exempt
+def login_handler(request):
+    dispatcher = SimpleXMLRPCDispatcher(encoding=u'UTF-8', allow_none=True)
+    dispatcher.register_instance(Authentication(request))
+    if len(request.POST):
+        return HttpResponse(dispatcher._marshaled_dispatch(request.raw_post_data))
 
 
 #from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
