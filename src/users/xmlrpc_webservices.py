@@ -13,7 +13,7 @@ class XMLRPC(object):
         self.request = request
     
 
-    def get_notifications_by_id(self, token=None, id):
+    def get_notifications_by_id(self, id, token=None):
         ''' params (token : String, id : integer) '''
         try:
             notification = Notification.objects.get(id=id)
@@ -24,7 +24,7 @@ class XMLRPC(object):
             return 'no such notification'
         
     
-    def get_notifications_by_date(self, token=None, after_date):
+    def get_notifications_by_date(self, after_date, token=None):
         ''' params (token : String, after_date : list[year, month, day]) '''
         from datetime import datetime
         after_date = datetime(after_date[0], after_date[1], after_date[2])
