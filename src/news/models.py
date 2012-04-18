@@ -5,6 +5,9 @@ class News(models.Model):
     title = models.CharField(_('title'), max_length=60)
     body = models.TextField(_('conetent'))
     date = models.DateTimeField(_('date'))
+    lon = models.FloatField(_('longitude'))
+    lat = models.FloatField(_('latitude'))
+    
     
     def __unicode__(self):
         return self.title

@@ -7,3 +7,4 @@ django_extensions
 mysql-python
 PIL
 django-test-utils
+south

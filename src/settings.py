@@ -188,7 +188,7 @@ INSTALLED_APPS = (
     'guardian',
     'test_utils',
     'news',
-    
+    'south',
 )
 
 
