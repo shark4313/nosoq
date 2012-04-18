@@ -13,7 +13,7 @@ class XMLRPC(object):
         self.request = request
     
 
-    def get_notifications_by_id(self, token=None, id):
+    def get_notifications_by_id(self, id, token=None):
         ''' params (token : String, id : integer) '''
         try:
             notification = Notification.objects.get(id=id)
@@ -22,9 +22,9 @@ class XMLRPC(object):
             return notification
         except Notification.DoesNotExist:
             return 'no such notification'
-        
     
-    def get_notifications_by_date(self, token=None, after_date):
+    
+    def get_notifications_by_date(self, after_date, token=None):
         ''' params (token : String, after_date : list[year, month, day]) '''
         from datetime import datetime
         after_date = datetime(after_date[0], after_date[1], after_date[2])
@@ -40,6 +40,23 @@ class XMLRPC(object):
         else:
             return 'no notifications after this date'
 
+
+    def get_notifications_by_location(self, lon, lat, delta):
+        notifications = Notification.objects.filter(lon__gt=(lon - delta))
+        notifications = notifications.filter(lat__gt=(lat - delta))
+        notifications = notifications.filter(lon__lt=(lon + delta))
+        notifications = notifications.filter(lat__lt=(lat + delta))
+        if notifications:
+            from django.forms.models import model_to_dict
+            reformed_notifications = []
+            for notification in notifications:
+                notification = model_to_dict(notification)
+                notification.pop('id')
+                reformed_notifications.append(notification)
+            return reformed_notifications
+        else:
+            return 'no notifications in this area'
+        
 
     def login(self, username, password):
         ''' params (username, password) '''

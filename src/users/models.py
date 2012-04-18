@@ -41,7 +41,9 @@ class Notification(models.Model):
     address = models.CharField(max_length=255, db_index=True)
     message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
     time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
-
+    lon = models.FloatField(_('longitude'))
+    lat = models.FloatField(_('latitude'))
+    
 #class News(models.Model):
 #    media =  models.ManyToManyField("Media" , blank=True)
 #    header = models.CharField(_("Header") , max_length=255 , blank=True , null= True)
