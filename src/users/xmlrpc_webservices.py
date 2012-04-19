@@ -1,17 +1,18 @@
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
+
+from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.contrib.sessions.backends.db import Session
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
-from django.contrib.sessions.backends.db import Session
+
 from models import Notification
-from django.contrib.auth.decorators import login_required
+from generic.functions import queryset_to_list_of_dicts
 
 class XMLRPC(object):
-    
-    
-    def get_notifications_by_id(self, id, token=None):
+    def get_notifications_by_id(self, id):
         ''' params (token : String, id : integer) '''
         try:
             notification = Notification.objects.get(id=id)
@@ -21,18 +22,13 @@ class XMLRPC(object):
         except Notification.DoesNotExist:
             return 'no such notification'
     
-    def get_notifications_by_date(self, after_date, token=None):
+    def get_notifications_by_date(self, after_date):
         ''' params (token : String, after_date : list[year, month, day]) '''
         from datetime import datetime
         after_date = datetime(after_date[0], after_date[1], after_date[2])
         notifications = Notification.objects.filter(time__gte=after_date)
-        if notifications:
-            from django.forms.models import model_to_dict
-            reformed_notifications = []
-            for notification in notifications:
-                notification = model_to_dict(notification)
-                notification.pop('id')
-                reformed_notifications.append(notification)
+        reformed_notifications = queryset_to_list_of_dicts(notifications)
+        if reformed_notifications:
             return reformed_notifications
         else:
             return 'no notifications after this date'
@@ -44,25 +40,13 @@ class XMLRPC(object):
         notifications = notifications.filter(lat__gt=(lat - delta))
         notifications = notifications.filter(lon__lt=(lon + delta))
         notifications = notifications.filter(lat__lt=(lat + delta))
-        if notifications:
-            from django.forms.models import model_to_dict
-            reformed_notifications = []
-            for notification in notifications:
-                notification = model_to_dict(notification)
-                notification.pop('id')
-                reformed_notifications.append(notification)
+        reformed_notifications = queryset_to_list_of_dicts(notifications)
+        if reformed_notifications:
             return reformed_notifications
         else:
             return 'no notifications in this area'
             
 
-def get_id_from_session(token):
-    try:
-        s = Session.objects.get(session_key=token)
-        id = s.get_decoded()['_auth_user_id']
-        return id
-    except Session.DoesNotExist:
-        return False
 
     
 dispatchers = {}
@@ -107,6 +91,14 @@ class Authentication(object):
     def __init__(self, request):
         self.request = request
 
+    def get_id_from_session(token):
+        try:
+            s = Session.objects.get(session_key=token)
+            id = s.get_decoded()['_auth_user_id']
+            return id
+        except Session.DoesNotExist:
+            return False
+        
     def login(self, username, password):
         ''' params (username, password) '''
         user = auth.authenticate(username=username, password=password)

@@ -9,10 +9,13 @@
 # running a full XMLRPC Server.  It's up to us to dispatch data
 
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
+
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from models import News
 from django.contrib.sessions.backends.db import Session
+
+from models import News
+from generic.functions import queryset_to_list_of_dicts
 
 dispatcher = SimpleXMLRPCDispatcher(allow_none=False, encoding=None) # Python 2.5
 
@@ -70,7 +73,7 @@ def rpc_handler(request, token=None):
     return response
     
 
-def get_news_by_id(id, token=None):
+def get_news_by_id(id):
     ''' params (token, id) '''
     try:
         news_item = News.objects.get(id=id)
@@ -80,6 +83,16 @@ def get_news_by_id(id, token=None):
     except News.DoesNotExist:
         return 'no such piece of news'
 
+def get_news_by_date(after_date):
+    ''' params (token, after_date) '''
+    from datetime import date
+    after_date = date(after_date[0], after_date[1], after_date[2])
+    news = News.objects.filter(date__gte=after_date)
+    reformed_news = queryset_to_list_of_dicts(news)
+    if reformed_news: 
+        return reformed_news
+    else:
+        return 'no notifications after this date'
 
 def get_news_by_location(lon, lat, delta):
     ''' params (lon, lat, delta) '''
@@ -87,32 +100,11 @@ def get_news_by_location(lon, lat, delta):
     news = news.filter(lat__gt=(lat - delta))
     news = news.filter(lon__lt=(lon + delta))
     news = news.filter(lat__lt=(lat + delta))
-    if news:
-        from django.forms.models import model_to_dict
-        reformed_news = []
-        for news_item in news:
-            news_item = model_to_dict(news_item)
-            news_item.pop('id')
-            reformed_news.append(news_item)
+    reformed_news = queryset_to_list_of_dicts(news)
+    if reformed_news:
         return reformed_news
     else:
         return 'no more news in this area'
-
-def get_news_by_date(after_date, token=None):
-    ''' params (token, after_date) '''
-    from datetime import date
-    after_date = date(after_date[0], after_date[1], after_date[2])
-    news = News.objects.filter(date__gte=after_date)
-    if news:
-        from django.forms.models import model_to_dict
-        reformed_news = []
-        for news_item in news:
-            news_item = model_to_dict(news_item)
-            news_item.pop('id')
-            reformed_news.append(news_item)
-        return reformed_news
-    else:
-        return 'no notifications after this date'
 
 
 # you have to manually register all functions that are xml-rpc-able with the dispatcher
