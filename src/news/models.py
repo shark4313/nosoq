@@ -8,7 +8,6 @@ class News(models.Model):
     lon = models.FloatField(_('longitude'))
     lat = models.FloatField(_('latitude'))
     
-    
     def __unicode__(self):
         return self.title
     

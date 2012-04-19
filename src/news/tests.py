@@ -7,7 +7,7 @@ Replace this with more appropriate tests for your application.
 
 from django.test import TestCase
 from models import News
-from views import add_news_item
+from xmlrpc_webservices import get_news_by_id
 
 class SimpleTest(TestCase):
     def test_basic_addition(self):
@@ -16,12 +16,9 @@ class SimpleTest(TestCase):
         """
         self.assertEqual(1 + 1, 2)
 
-#class AddNewsItemTest(TestCase):
-#    def setUp(self):
-#        pass
+#class GetNewsByIdTest(TestCase):
 #    
-#    def test_add_news_item(self):
-##        add_new
-#        pass
-    
+#    
+#    def test_it_returns_one_news_item(self):
+        
     
