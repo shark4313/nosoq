@@ -189,6 +189,7 @@ INSTALLED_APPS = (
     'test_utils',
     'news',
     'south',
+    'generic',  
 )
 
 
