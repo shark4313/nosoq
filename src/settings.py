@@ -1,5 +1,4 @@
 # Django settings for bouquet project.
-# from django.utils.translation import ugettext as _
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -16,7 +15,12 @@ ANONYMOUS_USER_ID  =  -1
 USERENA_MUGSHOT_GRAVATAR = True
 AUTH_PROFILE_MODULE = 'users.UserProfile'
 
+import socket
 
+try:
+    HOSTNAME = socket.gethostname()
+except:
+    HOSTNAME = 'localhost'
 
 MANAGERS = ADMINS
 
@@ -27,6 +31,8 @@ DATABASES = {
         'NAME': 'egamal_nosok',                      # Or path to database file if using sqlite3.
         'USER': 'egamal_nosok',                      # Not used with sqlite3.
         'PASSWORD': 'nosokp455w0rd',                  # Not used with sqlite3.
+#        'USER': 'root',                      # Not used with sqlite3.
+#        'PASSWORD': '456',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
