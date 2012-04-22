@@ -15,7 +15,7 @@ from django.contrib.auth.models import User
 
 
 
-admin.site.register(Country)
+#admin.site.register(Country)
 admin.site.register(UserProfile)
 admin.site.register(Media)
 admin.site.register(Notification)

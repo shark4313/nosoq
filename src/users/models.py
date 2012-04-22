@@ -7,14 +7,14 @@ from easy_thumbnails.fields import ThumbnailerField
 from django.contrib.auth.models import User
 
 
-class Country(models.Model):
-    name = models.CharField(_('Name'),  max_length=30 , default= "Egypt")
-    class Meta:
-        verbose_name        = _('Country')
-        verbose_name_plural = _('Countries')
-
-    def __unicode__(self):
-        return self.name
+#class Country(models.Model):
+#    name = models.CharField(_('Name'),  max_length=30 , default= "Egypt")
+#    class Meta:
+#        verbose_name        = _('Country')
+#        verbose_name_plural = _('Countries')
+#
+#    def __unicode__(self):
+#        return self.name
 
 class Media(models.Model):
     
@@ -38,11 +38,27 @@ class Media(models.Model):
         verbose_name_plural = _('Media Items')
 
 class Notification(models.Model):
-    address = models.CharField(max_length=255, db_index=True)
+    BEFORE = 0
+    AFTER = 1
+    WITHIN = 2
+    CATEGORIES = (
+                  (BEFORE , _('before')),
+                  (AFTER , _('after')),
+                  (WITHIN , _('within')),
+                  )
+    title = models.CharField(max_length=60, db_index=True)
     message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
     time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
     lon = models.FloatField(_('longitude'))
     lat = models.FloatField(_('latitude'))
+    category = models.IntegerField(_('category'), choices=CATEGORIES)
+    
+    def __unicode__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = _('notification')
+        verbose_name_plural = _('notifications')
     
 #class News(models.Model):
 #    media =  models.ManyToManyField("Media" , blank=True)

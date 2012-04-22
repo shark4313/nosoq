@@ -91,13 +91,6 @@ class Authentication(object):
     def __init__(self, request):
         self.request = request
 
-    def get_id_from_session(token):
-        try:
-            s = Session.objects.get(session_key=token)
-            id = s.get_decoded()['_auth_user_id']
-            return id
-        except Session.DoesNotExist:
-            return False
         
     def login(self, username, password):
         ''' params (username, password) '''
@@ -106,6 +99,13 @@ class Authentication(object):
         else: return 'username or password is wrong'
         return self.request.session.session_key
 
+def get_id_from_session(token):
+    try:
+        s = Session.objects.get(session_key=token)
+        id = s.get_decoded()['_auth_user_id']
+        return id
+    except Session.DoesNotExist:
+        return False
 
 @csrf_exempt
 def login_handler(request):

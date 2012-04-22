@@ -16,9 +16,8 @@ class SimpleTest(TestCase):
         """
         self.assertEqual(1 + 1, 2)
 
-#class GetNewsByIdTest(TestCase):
-#    
-#    
-#    def test_it_returns_one_news_item(self):
-        
+class GetNewsByIdTest(TestCase):
     
+    
+    def test_it_returns_one_news_item(self):
+        pass
