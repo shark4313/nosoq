@@ -250,4 +250,7 @@ FLUENT_DASHBOARD_APP_GROUPS = (
    
 )
 
+AVAILABLE_APPS = (
+                  'news',
+                  )
 

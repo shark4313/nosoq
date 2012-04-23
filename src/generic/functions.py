@@ -1,3 +1,5 @@
+from django.contrib.sessions.backends.db import Session
+
 def queryset_to_list_of_dicts(queryset):
     if queryset:
         from django.forms.models import model_to_dict
@@ -7,3 +9,11 @@ def queryset_to_list_of_dicts(queryset):
             list.append(item)
         return list
     return None
+
+def get_id_from_session(token):
+    try:
+        s = Session.objects.get(session_key=token)
+        id = s.get_decoded()['_auth_user_id']
+        return id
+    except Session.DoesNotExist:
+        return False

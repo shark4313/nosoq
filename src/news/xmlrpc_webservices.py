@@ -1,31 +1,12 @@
-# Patchless XMLRPC Service for Django
-# Kind of hacky, and stolen from Crast on irc.freenode.net:#django
-# Self documents as well, so if you call it from outside of an XML-RPC Client
-# it tells you about itself and its methods
-#
-# Brendan W. McAdams <brendan.mcadams@thewintergrp.com>
-
-# SimpleXMLRPCDispatcher lets us register xml-rpc calls w/o
-# running a full XMLRPC Server.  It's up to us to dispatch data
-
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.sessions.backends.db import Session
 
 from models import News
-from generic.functions import queryset_to_list_of_dicts
+from generic.functions import queryset_to_list_of_dicts, get_id_from_session
 
 dispatcher = SimpleXMLRPCDispatcher(allow_none=False, encoding=None) # Python 2.5
-
-def get_id_from_session(token):
-    try:
-        s = Session.objects.get(session_key=token)
-        id = s.get_decoded()['_auth_user_id']
-        return id
-    except Session.DoesNotExist:
-        return False
 
 
 @csrf_exempt
