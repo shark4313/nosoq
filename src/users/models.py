@@ -79,10 +79,8 @@ class UserProfile(UserenaBaseProfile):
     FEMALE = 1
  
     GENDER_CHOICES = (
-               
                 (MALE, _('male')),
                 (FEMALE, _('female')) ,
-
             )
 
     user = models.OneToOneField(User,
