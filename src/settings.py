@@ -15,12 +15,6 @@ ANONYMOUS_USER_ID  =  -1
 USERENA_MUGSHOT_GRAVATAR = True
 AUTH_PROFILE_MODULE = 'users.UserProfile'
 
-import socket
-
-try:
-    HOSTNAME = socket.gethostname()
-except:
-    HOSTNAME = 'localhost'
 
 MANAGERS = ADMINS
 
@@ -195,7 +189,7 @@ INSTALLED_APPS = (
     'news',
     'south',
     'generic',
-    'world',  
+    'world',
 )
 
 

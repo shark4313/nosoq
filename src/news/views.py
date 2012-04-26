@@ -1,9 +1,12 @@
-from forms import NewsForm
-from django.shortcuts import render_to_response
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
-#def add_news_item(request):
-#    if request.method == 'GET':
-#        form = NewsForm()
-#        return render_to_response('add_news.html', {'from':from})
-#    else request.method == 'POST':
-#        form = NewsForm(data=request.POST)
+from xmlrpc_webservices import dispatcher
+from generic.xmlrpc_decorator import requires_login
+
+@csrf_exempt
+@requires_login(dispatcher)
+def xmlrpc_handler(request, token):
+    if len(request.POST):
+        response = HttpResponse(dispatcher._marshaled_dispatch(request.raw_post_data))
+        return response

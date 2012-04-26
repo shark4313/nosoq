@@ -4,6 +4,7 @@ from django.contrib import admin
 
 from userena import views as userena_views
 from userena.forms import mSignupForm
+from linaro_django_xmlrpc import urls
 
 admin.autodiscover()
 
