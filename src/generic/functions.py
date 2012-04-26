@@ -1,4 +1,3 @@
-from django.contrib.sessions.backends.db import Session
 
 def queryset_to_list_of_dicts(queryset):
     if queryset:
@@ -11,9 +10,11 @@ def queryset_to_list_of_dicts(queryset):
     return None
 
 def get_id_from_session(token):
+    from django.contrib.sessions.backends.db import Session
     try:
         s = Session.objects.get(session_key=token)
-        id = s.get_decoded()['_auth_user_id']
+        id = s.get_decoded()['user_id']
         return id
     except Session.DoesNotExist:
         return False
+

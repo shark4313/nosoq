@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
-from xmlrpc_webservices import rpc_handler
+from views import xmlrpc_handler
 
 urlpatterns = patterns('',
-                       (r'^xmlrpc/$', rpc_handler),
-                       (r'^xmlrpc/(.+)', rpc_handler),
+                       (r'^xmlrpc/call/(.+)$', xmlrpc_handler),
+#                       (r'^xmlrpc/(.+)', rpc_handler),
                        )
