@@ -45,9 +45,6 @@ class Services(ServicesRoot):
         else:
             return 'no notifications in this area'
     
-    from xmlrpc_decorator import requires_login
-    from generic.functions import get_id_from_session
-    
     def register_to_app(self, app_name):
         ''' params (app_name) '''
         from django.db.models import get_app
