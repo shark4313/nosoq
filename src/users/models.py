@@ -37,21 +37,25 @@ class Media(models.Model):
         verbose_name = _('Media Item')
         verbose_name_plural = _('Media Items')
 
+
 class Notification(models.Model):
-    BEFORE = 0
-    AFTER = 1
+    BEFORE_TRAVELING = 0
+    BEFORE = 1
     WITHIN = 2
+    AFTER = 3
     CATEGORIES = (
+                  (BEFORE_TRAVELING, _('before traveling')),
                   (BEFORE , _('before')),
-                  (AFTER , _('after')),
                   (WITHIN , _('within')),
+                  (AFTER , _('after')),
                   )
-    title = models.CharField(max_length=60, db_index=True)
+    title = models.CharField(_('title'), max_length=60, db_index=True)
     message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
-    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
-    lon = models.FloatField(_('longitude'))
-    lat = models.FloatField(_('latitude'))
-    category = models.IntegerField(_('category'), choices=CATEGORIES)
+#    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
+    category = models.IntegerField(_('category'), help_text=('it is relative to manasek start date'), choices=CATEGORIES)
+    time_interval = models.IntegerField(_('time interval in hours'), help_text=_('it depends on the category chosen'), null=True)
+    lon = models.FloatField(_('longitude'), null=True)
+    lat = models.FloatField(_('latitude'), null=True)
     
     def __unicode__(self):
         return self.title
@@ -83,18 +87,17 @@ class UserProfile(UserenaBaseProfile):
                 (FEMALE, _('female')) ,
             )
 
-    user = models.OneToOneField(User,
-                                unique=True,
-                                verbose_name=_('user'),
-                                related_name='my_profile')
+    user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name='my_profile')
     
-    current_time    = models.DateTimeField(_("Current time"),help_text=_("Created in") , default = datetime.now() , editable = False)
+    current_time = models.DateTimeField(_("Current time"), help_text=_("Created in"), default=datetime.now(), editable=False)
     
     gender = models.IntegerField(_("Gender"), choices=GENDER_CHOICES, default=MALE)
     location = models.CharField(_("Location") , max_length = 255)
+    time_to_travel = models.DateTimeField(_('time to travel'))
+    time_to_start_manasek = models.DateField(_('time to start manasek'))
 
     def __unicode__(self):
-        return   ("%s  %s") %( self.user.first_name , self.user.last_name  )
+        return ("%s %s") % (self.user.first_name, self.user.last_name)
 
     class Meta:
         verbose_name = _('Profile')
