@@ -8,6 +8,7 @@ from generic.functions import get_id_from_session
 def requires_login(dispatcher):
     def _view_receiver(view):
         def _check_token(*args, **kwargs):
+#            if len(args[0].POST):
             id = get_id_from_session(args[1])
             if id:
                 dispatcher.instance.set_user_id(id)
@@ -18,5 +19,7 @@ def requires_login(dispatcher):
                 msg = xmlrpclib.dumps(msg, methodresponse=1, allow_none=False, encoding=u'UTF-8')
                 response = HttpResponse(msg)
             return response
+#            else:
+#                response = view(*args, **kwargs)
         return _check_token
     return _view_receiver

@@ -47,15 +47,29 @@ class Services(ServicesRoot):
     
     def register_to_app(self, app_name):
         ''' params (app_name) '''
-        from django.db.models import get_app
-        app = get_app(app_name)
-        model = app.Registrant
-        model.objects.create(user=User.objects.get(id=self.user_id))
-        return 'app has been registered'
+        from django.conf import settings
+        if app_name in settings.AVAILABLE_APPS:
+            from django.db.models import get_app
+            app = get_app(app_name)
+            model = app.Registrant
+            try:
+                model.objects.create(user=User.objects.get(id=self.user_id))
+                msg = 'app has been registered'
+            except:
+                msg = 'you are already registered to %s' % app_name
+            return msg
+        return 'no such app'
     
-    def fun(self):
-        return self.user_id
-    
+        
+def token_is_valid(token):
+    from django.contrib.sessions.backends.db import Session
+    try:
+        Session.objects.get(session_key=token)
+        return True
+    except Session.DoesNotExist:
+        return False
+
+
 def login(username, password):
     ''' params (username, password) '''
     from django.contrib.sessions.backends.db import SessionStore
@@ -71,6 +85,7 @@ def login(username, password):
 
 dispatcher.register_instance(Services())
 dispatcher.register_function(login)
+dispatcher.register_function(token_is_valid)
 #dispatcher.register_function(get_notifications_by_id)
 #dispatcher.register_function(get_notifications_by_date)
 #dispatcher.register_function(get_notifications_by_location)

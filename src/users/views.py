@@ -37,6 +37,29 @@ def xmlrpc_handler(request, token):
     if len(request.POST):
         response = HttpResponse(dispatcher._marshaled_dispatch(request.raw_post_data))
         return response
+    response = HttpResponse()
+    response.write('xmlrpc service')
+    return response
+#    else:
+#        response = HttpResponse()
+#        response.write("<b>This is an XML-RPC Service.</b><br>")
+#        response.write("You need to invoke it using an XML-RPC Client!<br>")
+#        response.write("The following methods are available:<ul>")
+#        methods = dispatcher.system_listMethods()
+#
+#        for method in methods:
+#                help =  dispatcher.system_methodHelp(method)
+#                response.write("<li><b>%s</b>: %s" % (method, help))
+#    return response 
+
+@csrf_exempt
+def token_checker(request):
+    if len(request.POST):
+        response = HttpResponse(dispatcher._marshaled_dispatch(request.raw_post_data))
+        return response
+    response = HttpResponse()
+    response.write('xmlrpc service')
+    return response
 
 @csrf_exempt
 def login_handler(request):
