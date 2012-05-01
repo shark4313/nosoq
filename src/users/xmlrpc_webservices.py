@@ -1,5 +1,4 @@
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
-from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
 
 from django.contrib import auth
 from django.contrib.auth.models import User
@@ -26,7 +25,7 @@ class Services(ServicesRoot):
         ''' params (token : String, after_date : list[year, month, day]) '''
         from datetime import datetime
         after_date = datetime(after_date[0], after_date[1], after_date[2])
-        notifications = Notification.objects.filter(time__gte=after_date)
+        notifications = Notification.objects.filter(time_interval__gte=after_date)
         reformed_notifications = queryset_to_list_of_dicts(notifications)
         if reformed_notifications:
             return reformed_notifications
