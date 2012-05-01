@@ -54,8 +54,8 @@ class Notification(models.Model):
 #    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
     category = models.IntegerField(_('category'), help_text=('it is relative to manasek start date'), choices=CATEGORIES)
     time_interval = models.IntegerField(_('time interval in hours'), help_text=_('it depends on the category chosen'), null=True)
-    lon = models.FloatField(_('longitude'), null=True)
-    lat = models.FloatField(_('latitude'), null=True)
+    lon = models.FloatField(_('longitude'), null=True, blank=True)
+    lat = models.FloatField(_('latitude'), null=True, blank=True)
     
     def __unicode__(self):
         return self.title
