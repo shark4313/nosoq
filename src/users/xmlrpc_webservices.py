@@ -32,7 +32,19 @@ class Services(ServicesRoot):
             return reformed_notifications
         else:
             return 'no notifications after this date'
-    
+   
+    def get_notifications_by_date2(self, after_date_year,after_date_month,after_date_day):
+        ''' params (token : String, after_date : list[year, month, day]) '''
+        from datetime import datetime
+        after_date = datetime(after_date_year, after_date_month, after_date_day)
+        notifications = Notification.objects.filter(time__gte=after_date)
+        reformed_notifications = queryset_to_list_of_dicts(notifications)
+        if reformed_notifications:
+            return reformed_notifications
+        else:
+            return 'no notifications after this date'
+
+ 
     def get_notifications_by_location(self, lon, lat, delta):
         ''' params (lon, lat, delta) '''
         notifications = Notification.objects.filter(lon__gt=(lon - delta))
