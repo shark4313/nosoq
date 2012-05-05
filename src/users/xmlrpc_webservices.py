@@ -21,16 +21,27 @@ class Services(ServicesRoot):
         except Notification.DoesNotExist:
             return 'no such notification'
     
-    def get_notifications_by_date(self, after_date):
-        ''' params (token : String, after_date : list[year, month, day]) '''
-        from datetime import datetime
-        after_date = datetime(after_date[0], after_date[1], after_date[2])
-        notifications = Notification.objects.filter(time_interval__gte=after_date)
-        reformed_notifications = queryset_to_list_of_dicts(notifications)
-        if reformed_notifications:
-            return reformed_notifications
-        else:
-            return 'no notifications after this date'
+#    def get_notifications_by_date(self, after_date):
+#        ''' params (after_date : list[year, month, day]) '''
+#        from datetime import datetime
+#        after_date = datetime(after_date[0], after_date[1], after_date[2])
+#        notifications = Notification.objects.filter(time_interval__gte=after_date)
+#        reformed_notifications = queryset_to_list_of_dicts(notifications)
+#        if reformed_notifications:
+#            return reformed_notifications
+#        else:
+#            return 'no notifications after this date'
+
+#    def get_notifications_by_date(self, after_date):
+#        ''' params (after_date : list[year, month, day]) '''
+#        from datetime import datetime
+#        after_date = datetime(after_date[0], after_date[1], after_date[2])
+#        notifications = Notification.objects.filter(time_interval__gte=after_date)
+#        reformed_notifications = queryset_to_list_of_dicts(notifications)
+#        if reformed_notifications:
+#            return reformed_notifications
+#        else:
+#            return 'no notifications after this date'
     
     def get_notifications_by_location(self, lon, lat, delta):
         ''' params (lon, lat, delta) '''

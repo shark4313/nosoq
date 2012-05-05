@@ -39,15 +39,19 @@ class Media(models.Model):
 
 
 class Notification(models.Model):
-    BEFORE_TRAVELING = 0
-    BEFORE = 1
-    WITHIN = 2
-    AFTER = 3
+    MORAL_PREPARATION = 0
+    PHYSICAL_PREPARATION = 1
+    TRAVELING_DAY = 2
+    IHRAM_HOW = 3
+    IHRAM_TABOO = 4
+    ENTERING_MEKKA = 5
     CATEGORIES = (
-                  (BEFORE_TRAVELING, _('before traveling')),
-                  (BEFORE , _('before')),
-                  (WITHIN , _('within')),
-                  (AFTER , _('after')),
+                  (MORAL_PREPARATION, _('moral preparation')),
+                  (PHYSICAL_PREPARATION , _('physical preparation')),
+                  (TRAVELING_DAY , _('traveling day')),
+                  (IHRAM_HOW , _('ihram how')),
+                  (IHRAM_TABOO , _('ihram taboo')),
+                  (ENTERING_MEKKA , _('entering mekka')),
                   )
     title = models.CharField(_('title'), max_length=60, db_index=True)
     message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
