@@ -102,6 +102,23 @@ class Services(ServicesRoot):
             return msg
         return 'no such app'
     
+    def list_apps(self):
+        from django.conf import settings
+        return settings.AVAILABLE_APPS
+        
+    def list_my_apps(self):
+        from django.conf import settings
+        from django.db.models import get_app
+        apps = settings.AVAILABLE_APPS
+        user = User.objects.get(pk=self.user_id)
+        def user_finder(app_name):
+            app = get_app(app_name)
+            model = app.Registrant
+            try:
+                return model.objects.get(user=user)
+            except model.DoesNotExist:
+                return False
+        return filter(user_finder, apps)
         
 def token_is_valid(token):
     from django.contrib.sessions.backends.db import Session
