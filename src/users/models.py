@@ -97,8 +97,9 @@ class UserProfile(UserenaBaseProfile):
     
     gender = models.IntegerField(_("Gender"), choices=GENDER_CHOICES, default=MALE)
     location = models.CharField(_("Location") , max_length = 255)
-    time_to_travel = models.DateTimeField(_('time to travel'))
-    time_to_start_manasek = models.DateField(_('time to start manasek'))
+    time_to_travel = models.DateTimeField(_('time to travel'), blank=True, null=True)
+    time_to_start_manasek = models.DateField(_('time to start manasek'), blank=True, null=True)
+    
 
     def __unicode__(self):
         return ("%s %s") % (self.user.first_name, self.user.last_name)
