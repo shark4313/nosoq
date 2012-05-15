@@ -3,4 +3,5 @@ from xmlrpc_webservices import rpc_handler
 
 urlpatterns = patterns('',
                        (r'^xmlrpc/$', rpc_handler),
+                       (r'^xmlrpc/(.+)', rpc_handler),
                        )
