@@ -261,21 +261,18 @@ class EditProfileForm(forms.ModelForm):
     last_name = forms.CharField(label=_(u'Last name'),
                                 max_length=30,
                                 required=False)
-    interests = forms.CharField(label=_("interests"),
-                                max_length=30,
-                                required=False)
+
     def __init__(self, *args, **kw):
         super(forms.ModelForm, self).__init__(*args, **kw)
         # Put the first and last name at the top
         new_order = self.fields.keyOrder[:-2]
         new_order.insert(0, 'first_name')
         new_order.insert(1, 'last_name')
-
         self.fields.keyOrder = new_order
 
     class Meta:
         model = get_profile_model()
-        exclude = ['user' , "privacy"]
+        exclude = ['user']
 
     def save(self, force_insert=False, force_update=False, commit=True):
         profile = super(EditProfileForm, self).save(commit=commit)
