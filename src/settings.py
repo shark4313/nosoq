@@ -13,6 +13,8 @@ LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
 ANONYMOUS_USER_ID  =  -1
 USERENA_MUGSHOT_GRAVATAR = True
+#USERENA_ACTIVATION_REQUIRED = False
+
 AUTH_PROFILE_MODULE = 'users.UserProfile'
 
 
