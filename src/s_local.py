@@ -1,4 +1,5 @@
 # Django settings for bouquet project.
+# from django.utils.translation import ugettext as _
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -13,24 +14,20 @@ LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
 ANONYMOUS_USER_ID  =  -1
 USERENA_MUGSHOT_GRAVATAR = True
-#USERENA_ACTIVATION_REQUIRED = False
-
 AUTH_PROFILE_MODULE = 'users.UserProfile'
+
 
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-#        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'ENGINE': 'django.contrib.gis.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'egamal_nosok',                      # Or path to database file if using sqlite3.
-        'USER': 'egamal_nosok',                      # Not used with sqlite3.
-        'PASSWORD': 'nosokp455w0rd',                  # Not used with sqlite3.
-#        'USER': 'root',                      # Not used with sqlite3.
-#        'PASSWORD': '456',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'geodjango',                      # Or path to database file if using sqlite3.
+        'USER': 'geodjango',                      # Not used with sqlite3.
+        'PASSWORD': 'my_passwd',                  # Not used with sqlite3.
+        'HOST': 'localhost',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '7000',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -89,7 +86,8 @@ STATICFILES_DIRS = (
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = [
-    "django.core.context_processors.auth",
+    # "django.core.context_processors.auth",
+    "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.i18n",
     "django.core.context_processors.debug",
     "django.core.context_processors.request",
@@ -124,8 +122,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'userena.middleware.UserenaLocaleMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+  'userena.middleware.UserenaLocaleMiddleware',
 
     )
 
@@ -144,13 +142,6 @@ EMAIL_HOST_USER = 'tafratest1@gmail.com'
 EMAIL_HOST_PASSWORD = 'tafratest'
 EMAIL_USE_TLS = True
 
-ROOT_URLCONF = 'src.urls'
-
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.version.VersionDebugPanel',
@@ -163,35 +154,44 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.signals.SignalDebugPanel',
     'debug_toolbar.panels.logger.LoggingPanel',
 )
-INSTALLED_APPS = (    "debug_toolbar",
+
+ROOT_URLCONF = 'src.urls'
+
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
+
+
+INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.gis',
-    'django.contrib.admin',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
 #    'fluent_dashboard',
     'admin_tools',     # for staticfiles in Django 1.3
     'admin_tools.theming',
     'admin_tools.menu',
+#    'admin_tools.dashboard',
+    'django.contrib.admin',
+    # Uncomment the next line to enable the admin:
+    'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    'django.contrib.admindocs',
     "userena" , 
-
+    "debug_toolbar",
     "django_extensions",    
     "users",
     'easy_thumbnails',
     'guardian',
     'test_utils',
     'news',
-    'south',
-    'generic',
-    'world',
+      'django.contrib.gis',
+      "world",
 )
-INTERNAL_IPS = ('127.0.0.1',)
-
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
@@ -244,7 +244,4 @@ FLUENT_DASHBOARD_APP_GROUPS = (
    
 )
 
-AVAILABLE_APPS = (
-                  'news',
-                  )
 
