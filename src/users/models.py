@@ -7,14 +7,14 @@ from easy_thumbnails.fields import ThumbnailerField
 from django.contrib.auth.models import User
 
 
-class Country(models.Model):
-    name = models.CharField(_('Name'),  max_length=30 , default= "Egypt")
-    class Meta:
-        verbose_name        = _('Country')
-        verbose_name_plural = _('Countries')
-
-    def __unicode__(self):
-        return self.name
+#class Country(models.Model):
+#    name = models.CharField(_('Name'),  max_length=30 , default= "Egypt")
+#    class Meta:
+#        verbose_name        = _('Country')
+#        verbose_name_plural = _('Countries')
+#
+#    def __unicode__(self):
+#        return self.name
 
 class Media(models.Model):
     
@@ -37,12 +37,36 @@ class Media(models.Model):
         verbose_name = _('Media Item')
         verbose_name_plural = _('Media Items')
 
+
 class Notification(models.Model):
-    address = models.CharField(max_length=255, db_index=True)
+    MORAL_PREPARATION = 0
+    PHYSICAL_PREPARATION = 1
+    TRAVELING_DAY = 2
+    IHRAM_HOW = 3
+    IHRAM_TABOO = 4
+    ENTERING_MEKKA = 5
+    CATEGORIES = (
+                  (MORAL_PREPARATION, _('moral preparation')),
+                  (PHYSICAL_PREPARATION , _('physical preparation')),
+                  (TRAVELING_DAY , _('traveling day')),
+                  (IHRAM_HOW , _('ihram how')),
+                  (IHRAM_TABOO , _('ihram taboo')),
+                  (ENTERING_MEKKA , _('entering mekka')),
+                  )
+    title = models.CharField(_('title'), max_length=60, db_index=True)
     message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
-    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
-    lon = models.FloatField(_('longitude'))
-    lat = models.FloatField(_('latitude'))
+#    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
+    category = models.IntegerField(_('category'), help_text=('it is relative to manasek start date'), choices=CATEGORIES)
+    time_interval = models.IntegerField(_('time interval in hours'), help_text=_('it depends on the category chosen'), null=True)
+    lon = models.FloatField(_('longitude'), null=True, blank=True)
+    lat = models.FloatField(_('latitude'), null=True, blank=True)
+    
+    def __unicode__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = _('notification')
+        verbose_name_plural = _('notifications')
     
 #class News(models.Model):
 #    media =  models.ManyToManyField("Media" , blank=True)
@@ -63,24 +87,22 @@ class UserProfile(UserenaBaseProfile):
     FEMALE = 1
  
     GENDER_CHOICES = (
-               
                 (MALE, _('male')),
                 (FEMALE, _('female')) ,
-
             )
 
-    user = models.OneToOneField(User,
-                                unique=True,
-                                verbose_name=_('user'),
-                                related_name='my_profile')
+    user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name='my_profile')
     
-    current_time    = models.DateTimeField(_("Current time"),help_text=_("Created in") , default = datetime.now() , editable = False)
+    current_time = models.DateTimeField(_("Current time"), help_text=_("Created in"), default=datetime.now(), editable=False)
     
     gender = models.IntegerField(_("Gender"), choices=GENDER_CHOICES, default=MALE)
     location = models.CharField(_("Location") , max_length = 255)
+    time_to_travel = models.DateTimeField(_('time to travel'), blank=True, null=True)
+    time_to_start_manasek = models.DateField(_('time to start manasek'), blank=True, null=True)
+    
 
     def __unicode__(self):
-        return   ("%s  %s") %( self.user.first_name , self.user.last_name  )
+        return ("%s %s") % (self.user.first_name, self.user.last_name)
 
     class Meta:
         verbose_name = _('Profile')

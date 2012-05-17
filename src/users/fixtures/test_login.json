@@ -1,0 +1,19 @@
+[
+	{
+		"pk": "1",
+		"model": "auth.users",
+		"fields": {
+			"username" : "amr",
+			"password" : "admin",
+			"email" : "amrnegm.01@gmail.com"
+		}
+	}
+]
+
+	// {
+		// "pk": "",
+		// "model": "",
+		// "fields": {
+			// "" : ""
+		// }
+	// }

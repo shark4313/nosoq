@@ -1,5 +1,4 @@
 # Django settings for bouquet project.
-# from django.utils.translation import ugettext as _
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -14,18 +13,22 @@ LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
 ANONYMOUS_USER_ID  =  -1
 USERENA_MUGSHOT_GRAVATAR = True
-AUTH_PROFILE_MODULE = 'users.UserProfile'
+#USERENA_ACTIVATION_REQUIRED = False
 
+AUTH_PROFILE_MODULE = 'users.UserProfile'
 
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.contrib.gis.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'egamal_nosok',                      # Or path to database file if using sqlite3.
         'USER': 'egamal_nosok',                      # Not used with sqlite3.
         'PASSWORD': 'nosokp455w0rd',                  # Not used with sqlite3.
+#        'USER': 'root',                      # Not used with sqlite3.
+#        'PASSWORD': '456',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -167,16 +170,14 @@ INSTALLED_APPS = (    "debug_toolbar",
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'django.contrib.admin',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
 #    'fluent_dashboard',
     'admin_tools',     # for staticfiles in Django 1.3
     'admin_tools.theming',
     'admin_tools.menu',
-#    'admin_tools.dashboard',
-    'django.contrib.admin',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
     "userena" , 
 
     "django_extensions",    
@@ -186,6 +187,8 @@ INSTALLED_APPS = (    "debug_toolbar",
     'test_utils',
     'news',
     'south',
+    'generic',
+    'world',
 )
 INTERNAL_IPS = ('127.0.0.1',)
 
@@ -241,4 +244,7 @@ FLUENT_DASHBOARD_APP_GROUPS = (
    
 )
 
+AVAILABLE_APPS = (
+                  'news',
+                  )
 

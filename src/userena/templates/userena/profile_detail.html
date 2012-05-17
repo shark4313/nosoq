@@ -64,6 +64,12 @@
     {% if profile.about_me %}
     <p><strong>{% trans "About me" %}</strong><br />{{ profile.about_me }}</p>
     {% endif %}
+    {% if profile.time_to_travel %}
+    <p><strong>{% trans "time to travel" %}</strong><br />{{ profile.time_to_travel }}</p>
+    {% endif %}
+    {% if profile.time_to_start_manasek %}
+    <p><strong>{% trans "time to start manasek" %}</strong><br />{{ profile.time_to_start_manasek }}</p>
+    {% endif %}
   </div>
 </div>
     {% endif %}

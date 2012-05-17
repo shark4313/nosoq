@@ -1,0 +1,976 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-05 13:44-0500\n"
+"PO-Revision-Date: 2012-05-05 20:47+0200\n"
+"Last-Translator: amr negm <amrnegm.01@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5\n"
+
+#: admin_tools/dashboard/dashboards.py:81
+#: admin_tools/menu/menus.py:100
+msgid "Dashboard"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:224
+msgid "Quick links"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:230
+msgid "Return to site"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:231
+#: admin_tools/theming/templates/admin/base.html:43
+#: userena/templates/userena/email_form.html:11
+#: userena/templates/userena/password_form.html:4
+#: userena/templates/userena/password_form.html:13
+#: userena/templates/userena/password_form.html:21
+#: userena/templates/userena/profile_detail.html:41
+#: userena/templates/userena/profile_form.html:14
+msgid "Change password"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:233
+#: admin_tools/theming/templates/admin/base.html:50
+msgid "Log out"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:239
+#: admin_tools/dashboard/modules.py:409
+#: admin_tools/menu/menus.py:103
+msgid "Applications"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:245
+#: admin_tools/menu/menus.py:107
+msgid "Administration"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:250
+#: admin_tools/dashboard/dashboards.py:304
+#: admin_tools/dashboard/modules.py:562
+msgid "Recent Actions"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:254
+msgid "Latest Django News"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:261
+msgid "Support"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:264
+msgid "Django documentation"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:269
+msgid "Django \"django-users\" mailing list"
+msgstr ""
+
+#: admin_tools/dashboard/dashboards.py:274
+msgid "Django irc channel"
+msgstr ""
+
+#: admin_tools/dashboard/modules.py:338
+msgid "Links"
+msgstr ""
+
+#: admin_tools/dashboard/modules.py:615
+msgid "No recent actions."
+msgstr ""
+
+#: admin_tools/dashboard/modules.py:661
+msgid "RSS Feed"
+msgstr ""
+
+#: admin_tools/dashboard/templates/admin/app_index.html:9
+#: admin_tools/theming/templates/admin/base.html:57
+msgid "Home"
+msgstr ""
+
+#: admin_tools/dashboard/templates/admin/app_index.html:11
+#, python-format
+msgid "%(name)s"
+msgstr ""
+
+#: admin_tools/dashboard/templates/admin_tools/dashboard/dashboard.html:55
+msgid "Modules"
+msgstr ""
+
+#: admin_tools/dashboard/templates/admin_tools/dashboard/modules/app_list.html:13
+#: admin_tools/dashboard/templates/admin_tools/dashboard/modules/model_list.html:11
+msgid "Add"
+msgstr ""
+
+#: admin_tools/dashboard/templates/admin_tools/dashboard/modules/app_list.html:14
+#: admin_tools/dashboard/templates/admin_tools/dashboard/modules/model_list.html:12
+msgid "Change"
+msgstr ""
+
+#: admin_tools/menu/items.py:328
+msgid "Bookmarks"
+msgstr ""
+
+#: admin_tools/menu/templates/admin/base_site.html:4
+msgid "Django site admin"
+msgstr ""
+
+#: admin_tools/menu/templates/admin/base_site.html:16
+msgid "Django administration"
+msgstr ""
+
+#: admin_tools/menu/templates/admin_tools/menu/menu.html:32
+msgid "Please enter a name for the bookmark"
+msgstr ""
+
+#: admin_tools/theming/templates/admin/base.html:30
+msgid "Welcome,"
+msgstr ""
+
+#: admin_tools/theming/templates/admin/base.html:35
+msgid "Documentation"
+msgstr ""
+
+#: news/models.py:6
+#: users/models.py:56
+msgid "title"
+msgstr ""
+
+#: news/models.py:7
+msgid "conetent"
+msgstr ""
+
+#: news/models.py:8
+msgid "date"
+msgstr ""
+
+#: news/models.py:9
+#: users/models.py:61
+msgid "longitude"
+msgstr ""
+
+#: news/models.py:10
+#: users/models.py:62
+msgid "latitude"
+msgstr ""
+
+#: news/models.py:16
+msgid "news item"
+msgstr ""
+
+#: news/models.py:17
+msgid "news"
+msgstr ""
+
+#: news/models.py:27
+msgid "registrant"
+msgstr ""
+
+#: news/models.py:28
+msgid "registrants"
+msgstr ""
+
+#: userena/forms.py:30
+msgid "Username"
+msgstr ""
+
+#: userena/forms.py:31
+msgid "Username must contain only letters, numbers, dots and underscores."
+msgstr ""
+
+#: userena/forms.py:34
+#: userena/forms.py:202
+#: userena/templates/userena/profile_detail.html:55
+msgid "Email"
+msgstr ""
+
+#: userena/forms.py:37
+msgid "Create password"
+msgstr ""
+
+#: userena/forms.py:40
+msgid "Repeat password"
+msgstr ""
+
+#: userena/forms.py:54
+msgid "This username is already taken."
+msgstr ""
+
+#: userena/forms.py:56
+msgid "This username is not allowed."
+msgstr ""
+
+#: userena/forms.py:62
+#: userena/forms.py:244
+msgid "This email is already in use. Please supply a different email."
+msgstr ""
+
+#: userena/forms.py:74
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: userena/forms.py:120
+msgid "I have read and agree to the Terms of Service"
+msgstr ""
+
+#: userena/forms.py:121
+msgid "You must agree to the terms to register."
+msgstr ""
+
+#: userena/forms.py:134
+#: userena/forms.py:258
+msgid "First name"
+msgstr ""
+
+#: userena/forms.py:135
+#: userena/forms.py:261
+msgid "Last name"
+msgstr ""
+
+#: userena/forms.py:136
+#: users/models.py:98
+msgid "Gender"
+msgstr ""
+
+#: userena/forms.py:180
+#, python-format
+msgid "%(label)s"
+msgstr ""
+
+#: userena/forms.py:183
+#, python-format
+msgid "%(error)s"
+msgstr ""
+
+#: userena/forms.py:190
+msgid "Email or username"
+msgstr ""
+
+#: userena/forms.py:191
+msgid "Either supply us with your email or username."
+msgstr ""
+
+#: userena/forms.py:192
+msgid "Password"
+msgstr ""
+
+#: userena/forms.py:196
+#, python-format
+msgid "Remember me for %(days)s"
+msgstr ""
+
+#: userena/forms.py:203
+msgid "Please supply your email."
+msgstr ""
+
+#: userena/forms.py:218
+msgid "Please enter a correct username or email and password. Note that both fields are case-sensitive."
+msgstr ""
+
+#: userena/forms.py:224
+#: userena/templates/layout.html:6
+#: userena/templates/userena/email_confirm_complete.html:6
+msgid "New email"
+msgstr ""
+
+#: userena/forms.py:242
+msgid "You're already known under this email."
+msgstr ""
+
+#: userena/forms.py:264
+msgid "interests"
+msgstr ""
+
+#: userena/managers.py:232
+#, python-format
+msgid "No profile found for %(username)s"
+msgstr ""
+
+#: userena/models.py:47
+#: userena/tests/profiles/models.py:18
+#: userena/tests/profiles/models.py:32
+#: users/models.py:94
+msgid "user"
+msgstr ""
+
+#: userena/models.py:50
+msgid "last active"
+msgstr ""
+
+#: userena/models.py:53
+msgid "The last date that the user was active."
+msgstr ""
+
+#: userena/models.py:55
+msgid "activation key"
+msgstr ""
+
+#: userena/models.py:59
+msgid "notification send"
+msgstr ""
+
+#: userena/models.py:61
+msgid "Designates whether this user has already got a notification about activating their account."
+msgstr ""
+
+#: userena/models.py:63
+msgid "unconfirmed email address"
+msgstr ""
+
+#: userena/models.py:65
+msgid "Temporary email address when the user requests an email change."
+msgstr ""
+
+#: userena/models.py:67
+msgid "unconfirmed email verification key"
+msgstr ""
+
+#: userena/models.py:71
+msgid "creation date of email confirmation key"
+msgstr ""
+
+#: userena/models.py:79
+msgid "userena registration"
+msgstr ""
+
+#: userena/models.py:80
+msgid "userena registrations"
+msgstr ""
+
+#: userena/models.py:202
+msgid "Open"
+msgstr ""
+
+#: userena/models.py:203
+msgid "Registered"
+msgstr ""
+
+#: userena/models.py:204
+msgid "Closed"
+msgstr ""
+
+#: userena/models.py:211
+msgid "mugshot"
+msgstr ""
+
+#: userena/models.py:215
+msgid "A personal image displayed in your profile."
+msgstr ""
+
+#: userena/models.py:217
+msgid "privacy"
+msgstr ""
+
+#: userena/models.py:221
+msgid "Designates who can view your profile."
+msgstr ""
+
+#: userena/models.py:300
+#, python-format
+msgid "%(first_name)s %(last_name)s"
+msgstr ""
+
+#: userena/models.py:362
+msgid "language"
+msgstr ""
+
+#: userena/settings.py:39
+msgid "a month"
+msgstr ""
+
+#: userena/views.py:146
+msgid "Your account has been activated and you have been signed in."
+msgstr ""
+
+#: userena/views.py:306
+msgid "You have been signed in."
+msgstr ""
+
+#: userena/views.py:521
+msgid "Your profile has been updated."
+msgstr ""
+
+#: userena/views.py:560
+msgid "You don't have permission to view this profile."
+msgstr ""
+
+#: userena/contrib/umessages/admin.py:25
+msgid "Date/time"
+msgstr ""
+
+#: userena/contrib/umessages/fields.py:56
+#, python-format
+msgid "The following usernames are incorrect: %(users)s."
+msgstr ""
+
+#: userena/contrib/umessages/forms.py:10
+msgid "To"
+msgstr ""
+
+#: userena/contrib/umessages/forms.py:11
+#: users/models.py:57
+msgid "Message"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:17
+msgid "from user"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:20
+msgid "to user"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:24
+msgid "latest message"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:31
+msgid "contact"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:32
+msgid "contacts"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:35
+#, python-format
+msgid "%(from_user)s and %(to_user)s"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:61
+#: userena/contrib/umessages/models.py:77
+msgid "recipient"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:64
+#: userena/contrib/umessages/models.py:112
+msgid "message"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:66
+msgid "read at"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:70
+msgid "recipient deleted at"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:78
+#: userena/contrib/umessages/models.py:99
+msgid "recipients"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:81
+#, python-format
+msgid "%(message)s"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:90
+msgid "body"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:94
+msgid "sender"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:101
+msgid "sent at"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:104
+msgid "sender deleted at"
+msgstr ""
+
+#: userena/contrib/umessages/models.py:113
+msgid "messages"
+msgstr ""
+
+#: userena/contrib/umessages/views.py:179
+msgid "Message is sent."
+msgstr ""
+
+#: userena/contrib/umessages/views.py:263
+msgid "Message is succesfully restored."
+msgid_plural "Messages are succesfully restored."
+msgstr[0] ""
+msgstr[1] ""
+
+#: userena/contrib/umessages/views.py:267
+msgid "Message is successfully removed."
+msgid_plural "Messages are successfully removed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: userena/contrib/umessages/templates/umessages/message_form.html:4
+msgid "Compose"
+msgstr ""
+
+#: userena/contrib/umessages/templates/umessages/message_form.html:10
+msgid "Compose message"
+msgstr ""
+
+#: userena/contrib/umessages/templates/umessages/message_form.html:13
+msgid "Send"
+msgstr ""
+
+#: userena/templates/layout.html:4
+#: userena/templates/userena/email_confirm_complete.html:4
+msgid "Email changed!"
+msgstr ""
+
+#: userena/templates/layout.html:8
+#: userena/templates/userena/email_confirm_complete.html:8
+msgid "Your new email address is saved. You can continue using userena with this email."
+msgstr ""
+
+#: userena/templates/fluent-dashboard/modules/personal.html:6
+#, python-format
+msgid "You can start editing pages using the <a href=\"%(pages_link)s\">%(pages_title)s</a> button."
+msgstr ""
+
+#: userena/templates/fluent-dashboard/modules/personal.html:10
+msgid "You can start editing content using the buttons below."
+msgstr ""
+
+#: userena/templates/userena/activate_fail.html:4
+msgid "Account activation failed."
+msgstr ""
+
+#: userena/templates/userena/activate_fail.html:5
+msgid "Your account could not be activated.."
+msgstr ""
+
+#: userena/templates/userena/activate_fail.html:8
+msgid "Your account could not be activated. This could be because your activation link has aged."
+msgstr ""
+
+#: userena/templates/userena/activate_fail.html:9
+msgid "Please try signing up again or contact us if you think something went wrong."
+msgstr ""
+
+#: userena/templates/userena/disabled.html:4
+msgid "Disabled account"
+msgstr ""
+
+#: userena/templates/userena/disabled.html:5
+msgid "Your account has been disabled"
+msgstr ""
+
+#: userena/templates/userena/disabled.html:7
+msgid "It seems your account has been disabled."
+msgstr ""
+
+#: userena/templates/userena/disabled.html:8
+msgid "If you feel that injustice has been done to you, feel free to contact the administrators to find out why"
+msgstr ""
+
+#: userena/templates/userena/email_change_complete.html:4
+msgid "Email verification"
+msgstr ""
+
+#: userena/templates/userena/email_change_complete.html:5
+msgid "Confirm your new email"
+msgstr ""
+
+#: userena/templates/userena/email_change_complete.html:8
+#, python-format
+msgid "You have received an email at %(email)s."
+msgstr ""
+
+#: userena/templates/userena/email_change_complete.html:9
+#, python-format
+msgid "To associate this email address with your account (%(username)s) click on the link provided in this email."
+msgstr ""
+
+#: userena/templates/userena/email_confirm_fail.html:4
+msgid "Email verification failed."
+msgstr ""
+
+#: userena/templates/userena/email_confirm_fail.html:5
+msgid "Your email could not be verified.."
+msgstr ""
+
+#: userena/templates/userena/email_confirm_fail.html:8
+msgid "Your email could not be verified..."
+msgstr ""
+
+#: userena/templates/userena/email_confirm_fail.html:9
+msgid "You could try changing it again in your account settings."
+msgstr ""
+
+#: userena/templates/userena/email_form.html:4
+#: userena/templates/userena/password_form.html:6
+#: userena/templates/userena/profile_form.html:6
+#, python-format
+msgid "Account &raquo; %(username)s"
+msgstr ""
+
+#: userena/templates/userena/email_form.html:9
+#: userena/templates/userena/password_form.html:11
+#: userena/templates/userena/profile_detail.html:14
+#: userena/templates/userena/profile_detail.html:39
+#: userena/templates/userena/profile_form.html:12
+msgid "View profile"
+msgstr ""
+
+#: userena/templates/userena/email_form.html:10
+#: userena/templates/userena/password_form.html:12
+#: userena/templates/userena/profile_form.html:13
+msgid "Edit profile"
+msgstr ""
+
+#: userena/templates/userena/email_form.html:12
+#: userena/templates/userena/email_form.html:19
+#: userena/templates/userena/password_form.html:14
+#: userena/templates/userena/profile_detail.html:42
+#: userena/templates/userena/profile_form.html:15
+msgid "Change email"
+msgstr ""
+
+#: userena/templates/userena/email_form.html:16
+msgid "Change email address"
+msgstr ""
+
+#: userena/templates/userena/password_complete.html:4
+msgid "Password changed"
+msgstr ""
+
+#: userena/templates/userena/password_complete.html:5
+msgid "Your password has been changed"
+msgstr ""
+
+#: userena/templates/userena/password_complete.html:8
+msgid "From now on you can use your new password to signin"
+msgstr ""
+
+#: userena/templates/userena/password_form.html:17
+msgid "Change Password"
+msgstr ""
+
+#: userena/templates/userena/password_reset_complete.html:4
+msgid "Password reset"
+msgstr ""
+
+#: userena/templates/userena/password_reset_complete.html:5
+msgid "Your password has been reset"
+msgstr ""
+
+#: userena/templates/userena/password_reset_complete.html:7
+msgid "You can now "
+msgstr ""
+
+#: userena/templates/userena/password_reset_complete.html:7
+msgid "signin"
+msgstr ""
+
+#: userena/templates/userena/password_reset_complete.html:7
+msgid "with your new password."
+msgstr ""
+
+#: userena/templates/userena/password_reset_confirm_form.html:4
+#: userena/templates/userena/password_reset_confirm_form.html:13
+#: userena/templates/userena/password_reset_form.html:4
+msgid "Reset password"
+msgstr ""
+
+#: userena/templates/userena/password_reset_confirm_form.html:9
+#: userena/templates/userena/password_reset_form.html:9
+msgid "Reset Password"
+msgstr ""
+
+#: userena/templates/userena/password_reset_done.html:4
+#: userena/templates/userena/password_reset_done.html:5
+msgid "Reset password email is send"
+msgstr ""
+
+#: userena/templates/userena/password_reset_done.html:8
+msgid "An e-mail has been send to you which explains how to reset your password."
+msgstr ""
+
+#: userena/templates/userena/password_reset_form.html:13
+msgid "Send password"
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:4
+#, python-format
+msgid "%(username)s's profile."
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:16
+msgid "Log out "
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:40
+msgid "Edit details"
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:47
+msgid "Your mugshot"
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:50
+#: users/models.py:29
+msgid "Name"
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:52
+msgid "Mobile"
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:58
+msgid "Age"
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:61
+msgid "Website"
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:64
+#: users/models.py:99
+msgid "Location"
+msgstr ""
+
+#: userena/templates/userena/profile_detail.html:67
+msgid "About me"
+msgstr ""
+
+#: userena/templates/userena/profile_form.html:4
+msgid "Account setup"
+msgstr ""
+
+#: userena/templates/userena/profile_form.html:19
+msgid "Edit Profile"
+msgstr ""
+
+#: userena/templates/userena/profile_form.html:22
+msgid "Save changes"
+msgstr ""
+
+#: userena/templates/userena/profile_list.html:4
+#: users/models.py:108
+msgid "Profiles"
+msgstr ""
+
+#: userena/templates/userena/profile_list.html:21
+msgid "previous"
+msgstr ""
+
+#: userena/templates/userena/profile_list.html:25
+#, python-format
+msgid ""
+"\n"
+"      Page %(page)s of %(num_pages)s\n"
+"      "
+msgstr ""
+
+#: userena/templates/userena/profile_list.html:31
+msgid "next"
+msgstr ""
+
+#: userena/templates/userena/signin_form.html:14
+#: userena/templates/userena/signin_form.html:38
+msgid "Signin"
+msgstr ""
+
+#: userena/templates/userena/signin_form.html:39
+msgid "Forgot your password?"
+msgstr ""
+
+#: userena/templates/userena/signout.html:4
+msgid "Signed out"
+msgstr ""
+
+#: userena/templates/userena/signout.html:5
+msgid "You have been signed out"
+msgstr ""
+
+#: userena/templates/userena/signout.html:8
+msgid "You have been signed out. Till we meet again."
+msgstr ""
+
+#: userena/templates/userena/signup_complete.html:4
+msgid "Signup almost done!"
+msgstr ""
+
+#: userena/templates/userena/signup_complete.html:6
+#: userena/templates/userena/signup_form.html:4
+#: userena/templates/userena/signup_form.html:32
+msgid "Signup"
+msgstr ""
+
+#: userena/templates/userena/signup_complete.html:9
+msgid "Thank you for signing up with us!"
+msgstr ""
+
+#: userena/templates/userena/signup_complete.html:12
+msgid "You have been send an e-mail with an activation link to the supplied email."
+msgstr ""
+
+#: userena/templates/userena/signup_complete.html:13
+msgid ""
+"We will store your signup information for {{\n"
+"  userena_activation_days }} days on our server. "
+msgstr ""
+
+#: userena/templates/userena/signup_complete.html:16
+msgid "You can now use the supplied credentials to signin."
+msgstr ""
+
+#: userena/tests/profile.py:6
+#: userena/tests/profiles/models.py:12
+msgid "Male"
+msgstr ""
+
+#: userena/tests/profile.py:7
+#: userena/tests/profiles/models.py:13
+msgid "Female"
+msgstr ""
+
+#: userena/tests/profile.py:9
+#: userena/tests/profiles/models.py:21
+msgid "gender"
+msgstr ""
+
+#: userena/tests/profile.py:13
+#: userena/tests/profiles/models.py:25
+msgid "website"
+msgstr ""
+
+#: userena/tests/profile.py:14
+#: userena/tests/profiles/models.py:26
+msgid "location"
+msgstr ""
+
+#: userena/tests/profile.py:15
+#: userena/tests/profiles/models.py:27
+msgid "about me"
+msgstr ""
+
+#: users/models.py:24
+msgid "image"
+msgstr ""
+
+#: users/models.py:25
+msgid "video"
+msgstr ""
+
+#: users/models.py:28
+msgid "Media Type"
+msgstr ""
+
+#: users/models.py:29
+msgid "Media Item name"
+msgstr ""
+
+#: users/models.py:30
+msgid "Time"
+msgstr ""
+
+#: users/models.py:30
+msgid "Addition time"
+msgstr ""
+
+#: users/models.py:31
+msgid "File name"
+msgstr ""
+
+#: users/models.py:31
+msgid "Media item file name"
+msgstr ""
+
+#: users/models.py:37
+msgid "Media Item"
+msgstr ""
+
+#: users/models.py:38
+msgid "Media Items"
+msgstr ""
+
+#: users/models.py:49
+msgid "moral preparation"
+msgstr "آداب السفر"
+
+#: users/models.py:50
+msgid "physical preparation"
+msgstr "نصائح للتجهز للسفر"
+
+#: users/models.py:51
+msgid "traveling day"
+msgstr "توجيهات يوم السفر حتي الوصول"
+
+#: users/models.py:52
+msgid "ihram how"
+msgstr "كيفية الاحرام"
+
+#: users/models.py:53
+msgid "ihram taboo"
+msgstr "محرمات الاحرام"
+
+#: users/models.py:54
+msgid "entering mekka"
+msgstr "عند دخول مكة"
+
+#: users/models.py:57
+msgid "Message sent to the person"
+msgstr ""
+
+#: users/models.py:59
+msgid "category"
+msgstr ""
+
+#: users/models.py:60
+msgid "time interval in hours"
+msgstr ""
+
+#: users/models.py:60
+msgid "it depends on the category chosen"
+msgstr ""
+
+#: users/models.py:68
+msgid "notification"
+msgstr ""
+
+#: users/models.py:69
+msgid "notifications"
+msgstr ""
+
+#: users/models.py:90
+msgid "male"
+msgstr ""
+
+#: users/models.py:91
+msgid "female"
+msgstr ""
+
+#: users/models.py:96
+msgid "Current time"
+msgstr ""
+
+#: users/models.py:96
+msgid "Created in"
+msgstr ""
+
+#: users/models.py:100
+msgid "time to travel"
+msgstr ""
+
+#: users/models.py:101
+msgid "time to start manasek"
+msgstr ""
+
+#: users/models.py:107
+msgid "Profile"
+msgstr ""
+
