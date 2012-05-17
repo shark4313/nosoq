@@ -12,10 +12,11 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
-
-
+class NotificationAdmin(admin.ModelAdmin):
+    model = Notification
+    list_display = ('title', 'category', 'for_whom')
 
 #admin.site.register(Country)
 admin.site.register(UserProfile)
 admin.site.register(Media)
-admin.site.register(Notification)
+admin.site.register(Notification, NotificationAdmin)
