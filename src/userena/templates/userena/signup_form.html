@@ -17,7 +17,7 @@
 {% block right-col %}
 
 <form class="form-horizontal" action="" method="post">
-
+{% csrf_token %}
 
     {% include "form_snippet.html" %}
     <br/>

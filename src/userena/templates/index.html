@@ -157,13 +157,14 @@
        <script>
     
     $(document).ready( function() {
-        
+           $.datepicker.setDefaults($.datepicker.regional['ar']);
+
     $('#id_time_to_travel').datetimepicker({
             dateFormat: 'yy-mm-dd',
             timeFormat: 'hh:mm:ss',
             currentText: 'الآن',
             closeText: 'تم التعديل',
-            
+         
     });
     $('#id_time_to_start_manasek').datetimepicker({
             dateFormat: 'yy-mm-dd',
