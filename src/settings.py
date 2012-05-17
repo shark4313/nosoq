@@ -124,8 +124,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'userena.middleware.UserenaLocaleMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-  'userena.middleware.UserenaLocaleMiddleware',
 
     )
 
@@ -144,6 +144,13 @@ EMAIL_HOST_USER = 'tafratest1@gmail.com'
 EMAIL_HOST_PASSWORD = 'tafratest'
 EMAIL_USE_TLS = True
 
+ROOT_URLCONF = 'src.urls'
+
+TEMPLATE_DIRS = (
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
 
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.version.VersionDebugPanel',
@@ -156,17 +163,7 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.signals.SignalDebugPanel',
     'debug_toolbar.panels.logger.LoggingPanel',
 )
-
-ROOT_URLCONF = 'src.urls'
-
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
-
-
-INSTALLED_APPS = (
+INSTALLED_APPS = (    "debug_toolbar",
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -182,7 +179,7 @@ INSTALLED_APPS = (
     'admin_tools.theming',
     'admin_tools.menu',
     "userena" , 
-    "debug_toolbar",
+
     "django_extensions",    
     "users",
     'easy_thumbnails',
@@ -193,6 +190,7 @@ INSTALLED_APPS = (
     'generic',
     'world',
 )
+INTERNAL_IPS = ('127.0.0.1',)
 
 
 DEBUG_TOOLBAR_CONFIG = {
