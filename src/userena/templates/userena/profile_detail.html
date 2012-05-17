@@ -6,9 +6,6 @@
 <h3>{{ profile.user.username }} </h3>
 {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}{% endblock %}
 
-{% block hero%}
-<h2>  مرحبا  {{request.user.get_full_name}} </h2> 
-{% endblock hero%}
 {% if  request.user.is_authenticated %}
       {%block menu%}
               <li><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %} </a></li>
@@ -18,6 +15,14 @@
 
 {% endif %}
       
+      
+       {% if user.username == profile.user.username %}
+                {%block left-col%}
+                    {{ block.super }}
+                
+                {% endblock %}
+                  {% endif %}
+                
 {% block center-col %}
     
 <style>
@@ -33,14 +38,8 @@
 <div class="white-box">
 
   {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
-  {% if user.username == profile.user.username %}
-  <ul id="box-nav">
-    <li><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %} </a></li>
-    <li><a href="{% url userena_profile_edit user.username %}">{% trans "Edit details" %} </a></li>
-    <li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %} </a></li>
-    <li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %} </a></li>
-  </ul>
-  {% endif %}
+ 
+
 
   <div id="details">
     <img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />

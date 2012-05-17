@@ -10,11 +10,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>موقع نسك</title>
 
-<script type="text/javascript" src="/static/js/jquery.js"></script> 
-<link rel="stylesheet" href="/static/css/prettyPhoto.css" type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
+
     <!-- Le styles -->
     
-    
+<link rel="stylesheet" href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/flick/jquery-ui.css'
+     type="text/css" media="screen" title="prettyPhoto main stylesheet" charset="utf-8" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -35,15 +35,32 @@
     <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}ico/apple-touch-icon-57-precomposed.png">
     
     
-    
+
       <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
+
       }
-      #cms_toolbar-toolbar{
-      top:50px;
+      .navbar .nav > li > a{
+        color : white ;
+        font-size : 16px;
       }
+      .navbar-inner{
+
+        background: #bfd255; /* Old browsers */
+        background: -moz-linear-gradient(top,  #bfd255 0%, #8eb92a 50%, #72aa00 51%, #9ecb2d 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bfd255), color-stop(50%,#8eb92a), color-stop(51%,#72aa00), color-stop(100%,#9ecb2d)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* IE10+ */
+        background: linear-gradient(top,  #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 ); /* IE6-9 */
+
+      }
+
+      
+
     </style>
     
   </head>
@@ -56,24 +73,25 @@
       <div class="navbar-inner">
         <div class="container">
     
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
+   
+ 
+          <div class="nav-collapse" style="padding-right:20px;">
           
-          <a class="brand" href="/accounts/{{request.user.username}}/"> نُسك </a>
-          <div class="nav-collapse">
+  
+             <a class="brand" href="/accounts/{{request.user.username}}/"> نُسك </a>
+        
             <ul class="nav">
-
+       
           {% if user.is_authenticated %}
-        <li><a href="/accounts/{{request.user.username}}/"  > الملف الشخصى </a></li>
+                <li><a href="/accounts/{{request.user.username}}/"  > الملف الشخصى </a></li>
               <li><a href="/accounts/signout/">تسجيل الخروج</a></li>
 
             {%else%}
             
               <li><a href="/accounts/signin/">تسجيل الدخول</a></li>
-       <li><a href="/accounts/signup/"> مستخدم جديد</a></li>
+                <li><a href="/accounts/signup/"> مستخدم جديد</a></li>
+                
+            
         {%endif%}
        
               {% block navbar %}
@@ -87,24 +105,28 @@
     </div>
 
     <div class="container">
-        <div id="mycarousel" class="jcarousel">
-        </div>
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-      {%block hero%}
-      
-      {%endblock hero%}
-        
-      </div>
 
-      <!-- Example row of columns -->
       <div class="row">
-        <div class="span4">
+        <div class="span2">
         {%block left-col%}
-        {%endblock left-col%}
-    
+        
+        {% if user.is_authenticated %}
+                <div class="well">
+        <ul class="nav nav-list">
+        <li >
+        <a href="{% url userena_profile_detail user.username %}"><span>{% trans 'View profile' %}</span></a>
+        </li>
+        <li ><a  href="{% url userena_profile_edit user.username %}">{% trans "Edit profile" %}</a></li>
+        <li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
+        <li ><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
+        </ul>
         </div>
-        <div class="span4">
+        {% endif %}
+        {%endblock left-col%}
+
+
+        </div>
+        <div class="span6">
         {%block center-col%}
         {%endblock center-col%}
    
@@ -117,30 +139,43 @@
         </div>
       </div>
 
-      <hr>
       <footer>
-
+    <center>
         <p>&copy; Company 2012</p>
+    </center>
       </footer>
-
-    </div> <!-- /container -->
+  </div>
+ <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{{ STATIC_URL }}js/jquery.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-transition.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-alert.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-modal.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-dropdown.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-scrollspy.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-tab.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-tooltip.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-popover.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-button.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-collapse.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-carousel.js"></script>
-    <script src="{{ STATIC_URL }}js/bootstrap-typeahead.js"></script>
-
+<script type="text/javascript" src="/static/jquery.js"></script> 
+    <script src= 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js' ></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/i18n/jquery-ui-i18n.min.js' ></script>
+   <script src="{{ STATIC_URL }}timepicker.js"></script>
+       <script>
+    
+    $(document).ready( function() {
+        
+    $('#id_time_to_travel').datetimepicker({
+            dateFormat: 'yy-mm-dd',
+            timeFormat: 'hh:mm:ss',
+            currentText: 'الآن',
+            closeText: 'تم التعديل',
+            
+    });
+    $('#id_time_to_start_manasek').datetimepicker({
+            dateFormat: 'yy-mm-dd',
+            timeFormat: 'hh:mm:ss',
+            currentText: 'الآن',
+            closeText: 'تم التعديل',
+            
+    });
+ 
+    
+    </script>
+    
+    
   </body>
 </html>
