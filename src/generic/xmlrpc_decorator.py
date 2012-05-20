@@ -11,10 +11,9 @@ def requires_login(dispatcher):
 #            if len(args[0].POST):
             id = get_id_from_session(args[1])
             if id:
-                dispatcher.instance.set_user_id(id)
+                dispatcher.instance.user_id = id
                 response = view(*args, **kwargs)
             else:
-                import xmlrpclib
                 msg = ('token is invalid',)
                 msg = xmlrpclib.dumps(msg, methodresponse=1, allow_none=False, encoding=u'UTF-8')
                 response = HttpResponse(msg)

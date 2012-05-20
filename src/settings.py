@@ -179,7 +179,6 @@ INSTALLED_APPS = (    "debug_toolbar",
     'admin_tools.theming',
     'admin_tools.menu',
     "userena" , 
-
     "django_extensions",    
     "users",
     'easy_thumbnails',
@@ -189,6 +188,7 @@ INSTALLED_APPS = (    "debug_toolbar",
     'south',
     'generic',
     'world',
+    'haram_traffic',
 )
 INTERNAL_IPS = ('127.0.0.1',)
 

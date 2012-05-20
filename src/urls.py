@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^$', userena_views.signup, {'signup_form': mSignupForm}),
     url(r'^news/', include('news.urls')),
     url(r'^users/', include('users.urls')),
+    url(r'^traffic/', include('haram_traffic.urls')),
     )
 
 urlpatterns += staticfiles_urlpatterns()

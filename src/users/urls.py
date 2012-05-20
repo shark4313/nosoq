@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import patterns, url
 from views import login_handler, xmlrpc_handler, token_checker
 
 urlpatterns = patterns('',    

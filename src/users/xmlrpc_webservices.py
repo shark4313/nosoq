@@ -4,8 +4,8 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 
 from models import Notification
-from generic.functions import queryset_to_list_of_dicts
-from generic.webservices import ServicesRoot
+from src.generic.functions import queryset_to_list_of_dicts
+from src.generic.webservices import ServicesRoot
 
 dispatcher = SimpleXMLRPCDispatcher(encoding=u'UTF-8', allow_none=True)
 
@@ -119,6 +119,8 @@ class Services(ServicesRoot):
             except model.DoesNotExist:
                 return False
         return filter(user_finder, apps)
+    
+
         
 def token_is_valid(token):
     from django.contrib.sessions.backends.db import Session
