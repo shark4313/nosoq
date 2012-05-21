@@ -4,12 +4,11 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 
 from models import Notification
-from src.generic.functions import queryset_to_list_of_dicts
-from src.generic.webservices import ServicesRoot
+from generic.functions import queryset_to_list_of_dicts
 
 dispatcher = SimpleXMLRPCDispatcher(encoding=u'UTF-8', allow_none=True)
 
-class Services(ServicesRoot):
+class Services(object):
     
     def get_notifications_by_id(self, id):
         ''' params (token : String, id : integer) '''

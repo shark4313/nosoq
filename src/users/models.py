@@ -61,6 +61,23 @@ class Notification(models.Model):
             (MALE, _('male')),
             (FEMALE, _('female')),
             )
+    NOT_DEFINED = 0
+    EIGHTH = 1
+    NINTH = 2
+    TENTH = 3
+    ELEVNTH = 4
+    TWELVTH = 5
+    THIRTEENTH = 6
+    DAYS = (
+            (NOT_DEFINED, _('not defined')),
+            (EIGHTH, _('egihth')),
+            (NINTH, _('ninth')),
+            (TENTH, _('tenth')),
+            (ELEVNTH, _('eleventh')),
+            (TWELVTH, _('twelvth')),
+            (THIRTEENTH, _('thirteenth')),
+            )
+    
     title = models.CharField(_('title'), max_length=60, db_index=True)
     message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
 #    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
@@ -69,13 +86,14 @@ class Notification(models.Model):
     time_interval = models.IntegerField(_('time interval in hours'), help_text=_('it depends on the category chosen'), null=True)
     lon = models.FloatField(_('longitude'), null=True, blank=True)
     lat = models.FloatField(_('latitude'), null=True, blank=True)
-    
-    def __unicode__(self):
-        return self.title
+    which_day = models.IntegerField(_('which day'), choices=DAYS)
     
     class Meta:
         verbose_name = _('notification')
         verbose_name_plural = _('notifications')
+    
+    def __unicode__(self):
+        return self.title
     
 #class News(models.Model):
 #    media =  models.ManyToManyField("Media" , blank=True)
@@ -98,20 +116,51 @@ class UserProfile(UserenaBaseProfile):
               (MALE, _('male')),
               (FEMALE, _('female')),
             )
-
+    UMRAH = 0
+    HAJJ_MUFRED = 1
+    HAJJ_QAREN = 2
+    HAJJ_MUTAMATE3 = 3
+    MANASEK = (
+               (UMRAH, _('umrah')),
+               (HAJJ_MUFRED, _('hajj mufred')),
+               (HAJJ_QAREN, _('hajj qaren')),
+               (HAJJ_MUTAMATE3, _('hajj mutamate3')),
+               )
+    TENTH = 3
+    ELEVNTH = 4
+    TWELVTH = 5
+    THIRTEENTH = 6
+    DAYS = (
+            (TENTH, _('tenth')),
+            (ELEVNTH, _('eleventh')),
+            (TWELVTH, _('twelvth')),
+            (THIRTEENTH, _('thirteenth')),
+            )
     user = models.OneToOneField(User, unique=True, verbose_name=_('user'), related_name='my_profile')
     current_time = models.DateTimeField(_("Current time"), help_text=_("Created in"), default=datetime.now(), editable=False)
     gender = models.IntegerField(_("Gender"), choices=GENDER, default=MALE)
 #    location = models.CharField(_("Location"), max_length = 255, blank=True)
     time_to_travel = models.DateTimeField(_('time to travel'), blank=True, null=True)
-    time_to_start_manasek = models.DateField(_('time to start manasek'), blank=True, null=True)
-    time_to_start_manasek = models.DateTimeField(_('time to start manasek'), blank=True, null=True)
-
-    def __unicode__(self):
-        return ("%s %s") % (self.user.first_name, self.user.last_name)
-
+    manasek_start_date = models.DateField(_('time to start manasek'), blank=True, null=True)
+    type_of_mansak = models.IntegerField(_('mansak type'), choices=MANASEK)
+    tahallol_day = models.IntegerField(_('tahallol day'), help_text=_('which day to do the great tahallol'), choices=DAYS, blank=True)
+    mota3agel = models.BooleanField(_('mot3agel'), blank=True)
+    
     class Meta:
         verbose_name = _('Profile')
         verbose_name_plural = _('Profiles')
 
+    def __unicode__(self):
+        return ("%s %s") % (self.user.first_name, self.user.last_name)
+
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+
+    
+    
+    
+    
+    
+    
+    
+    
+    

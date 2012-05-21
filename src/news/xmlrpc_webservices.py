@@ -1,16 +1,12 @@
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
 
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-
 from models import News
-from generic.functions import queryset_to_list_of_dicts, get_id_from_session
-from generic.webservices import ServicesRoot
+from generic.functions import queryset_to_list_of_dicts
 
 dispatcher = SimpleXMLRPCDispatcher(allow_none=False, encoding=None) 
 
 
-class Services(ServicesRoot):
+class Services(object):
     
     def get_news_by_id(self, id):
         ''' params (token, id) '''
