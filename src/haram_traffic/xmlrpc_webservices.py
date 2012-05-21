@@ -1,12 +1,10 @@
 from SimpleXMLRPCServer import SimpleXMLRPCDispatcher
 
-from generic.webservices import ServicesRoot
-
 from models import TrafficStatus
 
 dispatcher = SimpleXMLRPCDispatcher(encoding=u'UTF-8', allow_none=True)
 
-class Services(ServicesRoot):
+class Services(object):
     
     def report_haram_state(self, lat, lon, state):
         TrafficStatus.objects.create(lat=lat, lon=lon, value=state)
