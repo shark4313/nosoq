@@ -82,11 +82,11 @@ class Notification(models.Model):
     message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
 #    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
     category = models.IntegerField(_('category'), help_text=('it is relative to manasek start date'), choices=CATEGORIES)
+    which_day = models.IntegerField(_('which day'), choices=DAYS)
     for_whom = models.IntegerField(_('for whom'), choices=WHOM, default=BOTH)
     time_interval = models.IntegerField(_('time interval in hours'), help_text=_('it depends on the category chosen'), null=True)
     lon = models.FloatField(_('longitude'), null=True, blank=True)
     lat = models.FloatField(_('latitude'), null=True, blank=True)
-    which_day = models.IntegerField(_('which day'), choices=DAYS)
     
     class Meta:
         verbose_name = _('notification')

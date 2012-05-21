@@ -14,8 +14,8 @@ from django.contrib.auth.models import User
 
 class NotificationAdmin(admin.ModelAdmin):
     model = Notification
-    list_display = ('title', 'category', 'for_whom')
-    list_editable = ('category', 'for_whom')
+    list_display = ('title', 'category', 'which_day', 'for_whom')
+    list_editable = ('category', 'which_day', 'for_whom')
 
 #admin.site.register(Country)
 admin.site.register(UserProfile)
