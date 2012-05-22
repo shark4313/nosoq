@@ -145,6 +145,7 @@ class UserProfile(UserenaBaseProfile):
     type_of_mansak = models.IntegerField(_('mansak type'), choices=MANASEK)
     tahallol_day = models.IntegerField(_('tahallol day'), help_text=_('which day to do the great tahallol'), choices=DAYS, blank=True)
     mota3agel = models.BooleanField(_('mot3agel'), blank=True)
+    sa3ayt = models.BooleanField(help_text=_('in case you are doing hajj_qeran, did you "sa3ayt" just after umrah'))
     
     class Meta:
         verbose_name = _('Profile')

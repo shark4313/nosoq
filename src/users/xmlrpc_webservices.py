@@ -4,7 +4,7 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 
 from models import Notification
-from generic.functions import queryset_to_list_of_dicts
+from src.generic.functions import queryset_to_list_of_dicts
 
 dispatcher = SimpleXMLRPCDispatcher(encoding=u'UTF-8', allow_none=True)
 
