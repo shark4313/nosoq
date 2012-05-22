@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-05 13:44-0500\n"
-"PO-Revision-Date: 2012-05-05 20:47+0200\n"
+"POT-Creation-Date: 2012-05-22 05:52-0500\n"
+"PO-Revision-Date: 2012-05-22 12:53+0200\n"
 "Last-Translator: amr negm <amrnegm.01@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -32,12 +32,9 @@ msgstr ""
 
 #: admin_tools/dashboard/dashboards.py:231
 #: admin_tools/theming/templates/admin/base.html:43
-#: userena/templates/userena/email_form.html:11
+#: userena/templates/index.html:120
 #: userena/templates/userena/password_form.html:4
-#: userena/templates/userena/password_form.html:13
-#: userena/templates/userena/password_form.html:21
-#: userena/templates/userena/profile_detail.html:41
-#: userena/templates/userena/profile_form.html:14
+#: userena/templates/userena/password_form.html:19
 msgid "Change password"
 msgstr ""
 
@@ -143,8 +140,28 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
+#: haram_traffic/models.py:9
+msgid "low"
+msgstr ""
+
+#: haram_traffic/models.py:10
+msgid "medium"
+msgstr ""
+
+#: haram_traffic/models.py:11
+msgid "high"
+msgstr ""
+
+#: haram_traffic/models.py:21
+msgid "state"
+msgstr ""
+
+#: haram_traffic/models.py:22
+msgid "states"
+msgstr ""
+
 #: news/models.py:6
-#: users/models.py:56
+#: users/models.py:81
 msgid "title"
 msgstr ""
 
@@ -157,12 +174,12 @@ msgid "date"
 msgstr ""
 
 #: news/models.py:9
-#: users/models.py:61
+#: users/models.py:88
 msgid "longitude"
 msgstr ""
 
 #: news/models.py:10
-#: users/models.py:62
+#: users/models.py:89
 msgid "latitude"
 msgstr ""
 
@@ -191,8 +208,9 @@ msgid "Username must contain only letters, numbers, dots and underscores."
 msgstr ""
 
 #: userena/forms.py:34
+#: userena/forms.py:190
 #: userena/forms.py:202
-#: userena/templates/userena/profile_detail.html:55
+#: userena/templates/userena/profile_detail.html:54
 msgid "Email"
 msgstr ""
 
@@ -240,7 +258,7 @@ msgid "Last name"
 msgstr ""
 
 #: userena/forms.py:136
-#: users/models.py:98
+#: users/models.py:141
 msgid "Gender"
 msgstr ""
 
@@ -252,10 +270,6 @@ msgstr ""
 #: userena/forms.py:183
 #, python-format
 msgid "%(error)s"
-msgstr ""
-
-#: userena/forms.py:190
-msgid "Email or username"
 msgstr ""
 
 #: userena/forms.py:191
@@ -289,10 +303,6 @@ msgstr ""
 msgid "You're already known under this email."
 msgstr ""
 
-#: userena/forms.py:264
-msgid "interests"
-msgstr ""
-
 #: userena/managers.py:232
 #, python-format
 msgid "No profile found for %(username)s"
@@ -301,7 +311,7 @@ msgstr ""
 #: userena/models.py:47
 #: userena/tests/profiles/models.py:18
 #: userena/tests/profiles/models.py:32
-#: users/models.py:94
+#: users/models.py:139
 msgid "user"
 msgstr ""
 
@@ -398,11 +408,11 @@ msgstr ""
 msgid "You have been signed in."
 msgstr ""
 
-#: userena/views.py:521
+#: userena/views.py:520
 msgid "Your profile has been updated."
 msgstr ""
 
-#: userena/views.py:560
+#: userena/views.py:559
 msgid "You don't have permission to view this profile."
 msgstr ""
 
@@ -420,7 +430,7 @@ msgid "To"
 msgstr ""
 
 #: userena/contrib/umessages/forms.py:11
-#: users/models.py:57
+#: users/models.py:82
 msgid "Message"
 msgstr ""
 
@@ -525,6 +535,20 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
+#: userena/templates/index.html:117
+#: userena/templates/userena/profile_detail.html:11
+msgid "View profile"
+msgstr ""
+
+#: userena/templates/index.html:119
+msgid "Edit profile"
+msgstr ""
+
+#: userena/templates/index.html:121
+#: userena/templates/userena/email_form.html:17
+msgid "Change email"
+msgstr ""
+
 #: userena/templates/layout.html:4
 #: userena/templates/userena/email_confirm_complete.html:4
 msgid "Email changed!"
@@ -617,29 +641,7 @@ msgstr ""
 msgid "Account &raquo; %(username)s"
 msgstr ""
 
-#: userena/templates/userena/email_form.html:9
-#: userena/templates/userena/password_form.html:11
-#: userena/templates/userena/profile_detail.html:14
-#: userena/templates/userena/profile_detail.html:39
-#: userena/templates/userena/profile_form.html:12
-msgid "View profile"
-msgstr ""
-
-#: userena/templates/userena/email_form.html:10
-#: userena/templates/userena/password_form.html:12
-#: userena/templates/userena/profile_form.html:13
-msgid "Edit profile"
-msgstr ""
-
-#: userena/templates/userena/email_form.html:12
-#: userena/templates/userena/email_form.html:19
-#: userena/templates/userena/password_form.html:14
-#: userena/templates/userena/profile_detail.html:42
-#: userena/templates/userena/profile_form.html:15
-msgid "Change email"
-msgstr ""
-
-#: userena/templates/userena/email_form.html:16
+#: userena/templates/userena/email_form.html:14
 msgid "Change email address"
 msgstr ""
 
@@ -655,7 +657,7 @@ msgstr ""
 msgid "From now on you can use your new password to signin"
 msgstr ""
 
-#: userena/templates/userena/password_form.html:17
+#: userena/templates/userena/password_form.html:15
 msgid "Change Password"
 msgstr ""
 
@@ -680,12 +682,12 @@ msgid "with your new password."
 msgstr ""
 
 #: userena/templates/userena/password_reset_confirm_form.html:4
-#: userena/templates/userena/password_reset_confirm_form.html:13
+#: userena/templates/userena/password_reset_confirm_form.html:16
 #: userena/templates/userena/password_reset_form.html:4
 msgid "Reset password"
 msgstr ""
 
-#: userena/templates/userena/password_reset_confirm_form.html:9
+#: userena/templates/userena/password_reset_confirm_form.html:12
 #: userena/templates/userena/password_reset_form.html:9
 msgid "Reset Password"
 msgstr ""
@@ -708,58 +710,63 @@ msgstr ""
 msgid "%(username)s's profile."
 msgstr ""
 
-#: userena/templates/userena/profile_detail.html:16
+#: userena/templates/userena/profile_detail.html:13
 msgid "Log out "
 msgstr ""
 
-#: userena/templates/userena/profile_detail.html:40
-msgid "Edit details"
-msgstr ""
-
-#: userena/templates/userena/profile_detail.html:47
+#: userena/templates/userena/profile_detail.html:46
 msgid "Your mugshot"
 msgstr ""
 
-#: userena/templates/userena/profile_detail.html:50
+#: userena/templates/userena/profile_detail.html:49
 #: users/models.py:29
 msgid "Name"
 msgstr ""
 
-#: userena/templates/userena/profile_detail.html:52
+#: userena/templates/userena/profile_detail.html:51
 msgid "Mobile"
 msgstr ""
 
-#: userena/templates/userena/profile_detail.html:58
+#: userena/templates/userena/profile_detail.html:57
 msgid "Age"
 msgstr ""
 
-#: userena/templates/userena/profile_detail.html:61
+#: userena/templates/userena/profile_detail.html:60
 msgid "Website"
 msgstr ""
 
-#: userena/templates/userena/profile_detail.html:64
-#: users/models.py:99
+#: userena/templates/userena/profile_detail.html:63
 msgid "Location"
 msgstr ""
 
-#: userena/templates/userena/profile_detail.html:67
+#: userena/templates/userena/profile_detail.html:66
 msgid "About me"
 msgstr ""
+
+#: userena/templates/userena/profile_detail.html:69
+#: users/models.py:143
+msgid "time to travel"
+msgstr "موعد السفر"
+
+#: userena/templates/userena/profile_detail.html:72
+#: users/models.py:144
+msgid "time to start manasek"
+msgstr "وقت بدء المناسك"
 
 #: userena/templates/userena/profile_form.html:4
 msgid "Account setup"
 msgstr ""
 
-#: userena/templates/userena/profile_form.html:19
+#: userena/templates/userena/profile_form.html:22
 msgid "Edit Profile"
 msgstr ""
 
-#: userena/templates/userena/profile_form.html:22
+#: userena/templates/userena/profile_form.html:27
 msgid "Save changes"
 msgstr ""
 
 #: userena/templates/userena/profile_list.html:4
-#: users/models.py:108
+#: users/models.py:152
 msgid "Profiles"
 msgstr ""
 
@@ -779,24 +786,24 @@ msgstr ""
 msgid "next"
 msgstr ""
 
-#: userena/templates/userena/signin_form.html:14
-#: userena/templates/userena/signin_form.html:38
+#: userena/templates/userena/signin_form.html:15
+#: userena/templates/userena/signin_form.html:41
 msgid "Signin"
 msgstr ""
 
-#: userena/templates/userena/signin_form.html:39
+#: userena/templates/userena/signin_form.html:42
 msgid "Forgot your password?"
 msgstr ""
 
-#: userena/templates/userena/signout.html:4
+#: userena/templates/userena/signout.html:6
 msgid "Signed out"
 msgstr ""
 
-#: userena/templates/userena/signout.html:5
+#: userena/templates/userena/signout.html:7
 msgid "You have been signed out"
 msgstr ""
 
-#: userena/templates/userena/signout.html:8
+#: userena/templates/userena/signout.html:10
 msgid "You have been signed out. Till we meet again."
 msgstr ""
 
@@ -806,7 +813,7 @@ msgstr ""
 
 #: userena/templates/userena/signup_complete.html:6
 #: userena/templates/userena/signup_form.html:4
-#: userena/templates/userena/signup_form.html:32
+#: userena/templates/userena/signup_form.html:24
 msgid "Signup"
 msgstr ""
 
@@ -831,17 +838,17 @@ msgstr ""
 #: userena/tests/profile.py:6
 #: userena/tests/profiles/models.py:12
 msgid "Male"
-msgstr ""
+msgstr "ذكر"
 
 #: userena/tests/profile.py:7
 #: userena/tests/profiles/models.py:13
 msgid "Female"
-msgstr ""
+msgstr "انثي"
 
 #: userena/tests/profile.py:9
 #: userena/tests/profiles/models.py:21
 msgid "gender"
-msgstr ""
+msgstr "النوع"
 
 #: userena/tests/profile.py:13
 #: userena/tests/profiles/models.py:25
@@ -922,55 +929,129 @@ msgstr "محرمات الاحرام"
 msgid "entering mekka"
 msgstr "عند دخول مكة"
 
-#: users/models.py:57
-msgid "Message sent to the person"
-msgstr ""
-
-#: users/models.py:59
-msgid "category"
-msgstr ""
-
 #: users/models.py:60
-msgid "time interval in hours"
+msgid "both"
 msgstr ""
 
-#: users/models.py:60
-msgid "it depends on the category chosen"
-msgstr ""
-
-#: users/models.py:68
-msgid "notification"
-msgstr ""
-
-#: users/models.py:69
-msgid "notifications"
-msgstr ""
-
-#: users/models.py:90
+#: users/models.py:61
+#: users/models.py:116
 msgid "male"
 msgstr ""
 
-#: users/models.py:91
+#: users/models.py:62
+#: users/models.py:117
 msgid "female"
 msgstr ""
 
-#: users/models.py:96
+#: users/models.py:72
+msgid "not defined"
+msgstr ""
+
+#: users/models.py:73
+msgid "egihth"
+msgstr ""
+
+#: users/models.py:74
+msgid "ninth"
+msgstr ""
+
+#: users/models.py:75
+#: users/models.py:134
+msgid "tenth"
+msgstr ""
+
+#: users/models.py:76
+#: users/models.py:135
+msgid "eleventh"
+msgstr ""
+
+#: users/models.py:77
+#: users/models.py:136
+msgid "twelvth"
+msgstr ""
+
+#: users/models.py:78
+#: users/models.py:137
+msgid "thirteenth"
+msgstr ""
+
+#: users/models.py:82
+msgid "Message sent to the person"
+msgstr ""
+
+#: users/models.py:84
+msgid "category"
+msgstr ""
+
+#: users/models.py:85
+msgid "which day"
+msgstr ""
+
+#: users/models.py:86
+msgid "for whom"
+msgstr ""
+
+#: users/models.py:87
+msgid "time interval in hours"
+msgstr ""
+
+#: users/models.py:87
+msgid "it depends on the category chosen"
+msgstr ""
+
+#: users/models.py:92
+msgid "notification"
+msgstr ""
+
+#: users/models.py:93
+msgid "notifications"
+msgstr ""
+
+#: users/models.py:124
+msgid "umrah"
+msgstr ""
+
+#: users/models.py:125
+msgid "hajj mufred"
+msgstr ""
+
+#: users/models.py:126
+msgid "hajj qaren"
+msgstr ""
+
+#: users/models.py:127
+msgid "hajj mutamate3"
+msgstr ""
+
+#: users/models.py:140
 msgid "Current time"
 msgstr ""
 
-#: users/models.py:96
+#: users/models.py:140
 msgid "Created in"
 msgstr ""
 
-#: users/models.py:100
-msgid "time to travel"
+#: users/models.py:145
+msgid "mansak type"
 msgstr ""
 
-#: users/models.py:101
-msgid "time to start manasek"
+#: users/models.py:146
+msgid "tahallol day"
 msgstr ""
 
-#: users/models.py:107
+#: users/models.py:146
+msgid "which day to do the great tahallol"
+msgstr ""
+
+#: users/models.py:147
+msgid "mot3agel"
+msgstr ""
+
+#: users/models.py:148
+msgid "in case you are doing hajj_qeran, did you \"sa3ayt\" just after umrah"
+msgstr ""
+
+#: users/models.py:151
 msgid "Profile"
 msgstr ""
 
