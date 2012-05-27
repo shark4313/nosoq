@@ -4,11 +4,12 @@ from django.contrib import auth
 from django.contrib.auth.models import User
 
 from models import Notification
-from src.generic.functions import queryset_to_list_of_dicts
+from generic.functions import queryset_to_list_of_dicts
+from generic.webservices import ServicesRoot
 
 dispatcher = SimpleXMLRPCDispatcher(encoding=u'UTF-8', allow_none=True)
 
-class Services(object):
+class Services(ServicesRoot):
     
     def get_notifications_by_id(self, id):
         ''' params (token : String, id : integer) '''
@@ -31,9 +32,15 @@ class Services(object):
         else:
             return 'no notifications after this date'
   
-    def get_notifications_by_timeInterval(self, category, timeInterval):
-        ''' params (token : String, category_name : String, timeInterva : Integer) '''
-        notifications = Notification.objects.filter(time_interval__gte = timeInterval, category = category)
+#    def get_notifications_by_timeInterval(self, category, timeInterval):
+
+    def get_notifications_by_category(self, category):
+        ''' params (token : String, category_name :Integer) '''
+        notifications = Notification.objects.filter(category = int(category))
+        #if notifications.count != 0:
+        #    return notifications
+        #else:
+        #    return "no notifications matched"
         reformed_notifications = queryset_to_list_of_dicts(notifications)
         if reformed_notifications:
             return reformed_notifications
@@ -52,28 +59,6 @@ class Services(object):
             return 'no notifications after this date'
 
  
-#    def get_notifications_by_date(self, after_date):
-#        ''' params (after_date : list[year, month, day]) '''
-#        from datetime import datetime
-#        after_date = datetime(after_date[0], after_date[1], after_date[2])
-#        notifications = Notification.objects.filter(time_interval__gte=after_date)
-#        reformed_notifications = queryset_to_list_of_dicts(notifications)
-#        if reformed_notifications:
-#            return reformed_notifications
-#        else:
-#            return 'no notifications after this date'
-
-#    def get_notifications_by_date(self, after_date):
-#        ''' params (after_date : list[year, month, day]) '''
-#        from datetime import datetime
-#        after_date = datetime(after_date[0], after_date[1], after_date[2])
-#        notifications = Notification.objects.filter(time_interval__gte=after_date)
-#        reformed_notifications = queryset_to_list_of_dicts(notifications)
-#        if reformed_notifications:
-#            return reformed_notifications
-#        else:
-#            return 'no notifications after this date'
-    
     def get_notifications_by_location(self, lon, lat, delta):
         ''' params (lon, lat, delta) '''
         notifications = Notification.objects.filter(lon__gt=(lon - delta))
@@ -101,25 +86,6 @@ class Services(object):
             return msg
         return 'no such app'
     
-    def list_apps(self):
-        from django.conf import settings
-        return settings.AVAILABLE_APPS
-        
-    def list_my_apps(self):
-        from django.conf import settings
-        from django.db.models import get_app
-        apps = settings.AVAILABLE_APPS
-        user = User.objects.get(pk=self.user_id)
-        def user_finder(app_name):
-            app = get_app(app_name)
-            model = app.Registrant
-            try:
-                return model.objects.get(user=user)
-            except model.DoesNotExist:
-                return False
-        return filter(user_finder, apps)
-    
-
         
 def token_is_valid(token):
     from django.contrib.sessions.backends.db import Session
