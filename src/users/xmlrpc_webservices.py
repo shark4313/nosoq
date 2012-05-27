@@ -34,9 +34,9 @@ class Services(ServicesRoot):
   
 #    def get_notifications_by_timeInterval(self, category, timeInterval):
 
-    def get_notifications_by_category(self, category):
-        ''' params (token : String, category_name :Integer) '''
-        notifications = Notification.objects.filter(category = int(category))
+    def get_notifications_by_filters(self, **kwargs):
+#        ''' params (token : String, category_name :Integer) '''
+        notifications = Notification.objects.filter(category=0)[:3]
         #if notifications.count != 0:
         #    return notifications
         #else:
