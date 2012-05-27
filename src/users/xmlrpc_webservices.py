@@ -34,14 +34,9 @@ class Services(ServicesRoot):
   
 #    def get_notifications_by_timeInterval(self, category, timeInterval):
 
-
-    def get_notifications_by_category(self, category):
-        ''' params (token : String, category_name :Integer) '''
-        notifications = Notification.objects.filter(category = int(category))[:5]
-        #if notifications.count != 0:
-        #    return notifications
-        #else:
-        #    return "no notifications matched"
+    def get_notifications_by_filters(self, kwargs):
+        ''' params (token : String, kwargs : dict) '''
+        notifications = Notification.objects.filter(**kwargs)[:5]
         reformed_notifications = queryset_to_list_of_dicts(notifications)
         if reformed_notifications:
             return reformed_notifications
