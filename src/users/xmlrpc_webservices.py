@@ -36,7 +36,7 @@ class Services(ServicesRoot):
 
     def get_notifications_by_category(self, category):
         ''' params (token : String, category_name :Integer) '''
-        notifications = Notification.objects.filter(category = int(category))
+        notifications = Notification.objects.filter(category = int(category))[:5]
         #if notifications.count != 0:
         #    return notifications
         #else:
