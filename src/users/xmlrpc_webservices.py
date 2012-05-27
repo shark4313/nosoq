@@ -46,6 +46,19 @@ class Services(ServicesRoot):
             return reformed_notifications
         else:
             return 'no notifications after this date'
+
+    def get_notifications_by_for_whom(self, for_whom):
+        ''' params (token : String, category_name :Integer) '''
+        notifications = Notification.objects.filter(for_whom=for_whom)
+        #if notifications.count != 0:
+        #    return notifications
+        #else:
+        #    return "no notifications matched"
+        reformed_notifications = queryset_to_list_of_dicts(notifications)
+        if reformed_notifications:
+            return reformed_notifications
+        else:
+            return 'no notifications after this date'
  
     def get_notifications_by_date2(self, after_date_year,after_date_month,after_date_day):
         ''' params (token : String, after_date : list[year, month, day]) '''
