@@ -45,6 +45,7 @@ class Notification(models.Model):
     IHRAM_HOW = 3
     IHRAM_TABOO = 4
     ENTERING_MEKKA = 5
+    UMRAH = 6
     CATEGORIES = (
                   (MORAL_PREPARATION, _('moral preparation')),
                   (PHYSICAL_PREPARATION , _('physical preparation')),
@@ -52,6 +53,7 @@ class Notification(models.Model):
                   (IHRAM_HOW , _('ihram how')),
                   (IHRAM_TABOO , _('ihram taboo')),
                   (ENTERING_MEKKA , _('entering mekka')),
+                  (UMRAH, _('umrah')),
                   )
     BOTH = 0
     MALE = 1
