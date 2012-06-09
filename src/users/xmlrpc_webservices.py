@@ -32,30 +32,7 @@ class Services(ServicesRoot):
         else:
             return 'no notifications after this date'
   
-#    def get_notifications_by_timeInterval(self, category, timeInterval):
 
-    def get_notifications_by_filters(self, kwargs):
-        ''' params (token : String, kwargs : dict) '''
-        notifications = Notification.objects.filter(**kwargs)[:5]
-        reformed_notifications = queryset_to_list_of_dicts(notifications)
-        if reformed_notifications:
-            return reformed_notifications
-        else:
-            return 'no notifications for this category'
-
-    def get_notifications_by_category(self, category):
-        ''' params (token : String, category_name :Integer) '''
-        notifications = Notification.objects.filter(category=category)[:5]
-        #if notifications.count != 0:
-        #    return notifications
-        #else:
-        #    return "no notifications matched"
-        reformed_notifications = queryset_to_list_of_dicts(notifications)
-        if reformed_notifications:
-            return reformed_notifications
-        else:
-            return 'no notifications'
- 
     def get_notifications_by_date2(self, after_date_year,after_date_month,after_date_day):
         ''' params (token : String, after_date : list[year, month, day]) '''
         from datetime import datetime
@@ -67,6 +44,41 @@ class Services(ServicesRoot):
         else:
             return 'no notifications after this date'
 
+    def get_notifications_by_filters(self, kwargs):
+        ''' params (token : String, kwargs : dict) '''
+        notifications = Notification.objects.filter(**kwargs)[:5]
+        reformed_notifications = queryset_to_list_of_dicts(notifications)
+        if reformed_notifications:
+            return reformed_notifications
+        else:
+            return 'no notifications'
+
+    def get_notifications_by_for_whom(self, for_whom):
+        ''' params (token : String, for_whom :Integer) '''
+        notifications = Notification.objects.filter(for_whom=for_whom)
+        reformed_notifications = queryset_to_list_of_dicts(notifications)
+        if reformed_notifications:
+            return reformed_notifications
+        else:
+            return 'no notifications'
+
+    def get_notifications_by_category(self, category):
+        ''' params (token : String, category_name :Integer) '''
+        notifications = Notification.objects.filter(category=category)[:5]
+        reformed_notifications = queryset_to_list_of_dicts(notifications)
+        if reformed_notifications:
+            return reformed_notifications
+        else:
+            return 'no notifications'
+
+    def get_notifications_by_which_day(self, which_day):
+        ''' params (token : String, which_day :Integer) '''
+        notifications = Notification.objects.filter(which_day=which_day)
+        reformed_notifications = queryset_to_list_of_dicts(notifications)
+        if reformed_notifications:
+            return reformed_notifications
+        else:
+            return 'no notifications'
  
     def get_notifications_by_location(self, lon, lat, delta):
         ''' params (lon, lat, delta) '''
