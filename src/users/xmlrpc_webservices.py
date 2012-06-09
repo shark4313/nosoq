@@ -43,9 +43,9 @@ class Services(ServicesRoot):
         else:
             return 'no notifications for this category'
 
-    def get_notifications_by_for_whom(self, for_whom):
+    def get_notifications_by_category(self, category):
         ''' params (token : String, category_name :Integer) '''
-        notifications = Notification.objects.filter(for_whom=for_whom)
+        notifications = Notification.objects.filter(category=category)[:5]
         #if notifications.count != 0:
         #    return notifications
         #else:
