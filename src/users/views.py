@@ -18,7 +18,7 @@ def login_handler(request):
 @csrf_exempt
 @requires_login(dispatcher)
 def xmlrpc_handler(request, token):
-    import pdb; pdb.set_trace()
+#    import pdb; pdb.set_trace()
     if len(request.POST):
         response = HttpResponse(dispatcher._marshaled_dispatch(request.raw_post_data))
         return response
