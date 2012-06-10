@@ -46,7 +46,7 @@ class Services(ServicesRoot):
 
     def get_notifications_by_filters(self, kwargs):
         ''' params (token : String, kwargs : dict) '''
-        notifications = Notification.objects.filter(**kwargs)[:3].values('id', 'title', 'message', 'for_whom')
+        notifications = Notification.objects.filter(**kwargs).values('id', 'title', 'message', 'for_whom')
 #        reformed_notifications = queryset_to_list_of_dicts(notifications)
         reformed_notifications = eval(notifications.__repr__())
         if reformed_notifications:
@@ -56,7 +56,9 @@ class Services(ServicesRoot):
 
     def get_notifications_by_for_whom(self, for_whom):
         ''' params (token : String, for_whom :Integer) '''
-        notifications = Notification.objects.filter(for_whom=for_whom)[:3].values('id', 'title', 'message', 'for_whom')
+        from django.db.models import Q
+        query = Q(for_whom=for_whom) | Q(for_whom=Notification.BOTH)
+        notifications = Notification.objects.filter(query).values('id', 'title', 'message', 'for_whom')
 #        reformed_notifications = queryset_to_list_of_dicts(notifications)
         reformed_notifications = eval(notifications.__repr__())
         if reformed_notifications:
@@ -66,7 +68,7 @@ class Services(ServicesRoot):
 
     def get_notifications_by_category(self, category):
         ''' params (token : String, category_name :Integer) '''
-        notifications = Notification.objects.filter(category=category)[:3].values('id', 'title', 'message', 'for_whom')
+        notifications = Notification.objects.filter(category=category).values('id', 'title', 'message', 'for_whom')
 #        reformed_notifications = queryset_to_list_of_dicts(notifications)
         reformed_notifications = eval(notifications.__repr__())
         if reformed_notifications:
@@ -74,10 +76,11 @@ class Services(ServicesRoot):
         else:
             return 'no notifications'
 
-    def get_notifications_by_which_day(self, which_day):
+    def get_notifications_by_which_day(self, which_day, hajj_type):
         ''' params (token : String, which_day :Integer) '''
-        n = Notification.objects.filter(which_day=which_day)[:3].values('id', 'title', 'message', 'for_whom')
-        notifications = n
+        from django.db.models import Q
+        query = Q(which_day=which_day, hajj_type=hajj_type) | Q(which_day=which_day, hajj_type=None) 
+        notifications = Notification.objects.filter(query).values('id', 'title', 'message', 'for_whom')
 #        reformed_notifications = queryset_to_list_of_dicts(notifications)
         reformed_notifications = eval(notifications.__repr__())
         if reformed_notifications:
