@@ -153,7 +153,7 @@ class UserProfile(UserenaBaseProfile):
 #    location = models.CharField(_("Location"), max_length = 255, blank=True)
     time_to_travel = models.DateTimeField(_('time to travel'), blank=True, null=True)
     manasek_start_date = models.DateField(_('time to start manasek'), blank=True, null=True)
-    type_of_mansak = models.IntegerField(_('mansak type'), choices=MANASEK, null=True)
+    type_of_mansak = models.IntegerField(_('mansak type'), choices=MANASEK, null=True, blank=True)
     tahallol_day = models.IntegerField(_('tahallol day'), help_text=_('which day to do the great tahallol'), choices=DAYS, blank=True)
     mota3agel = models.BooleanField(_('mot3agel'), blank=True)
     sa3ayt = models.BooleanField(help_text=_('in case you are doing hajj_qeran, did you "sa3ayt" just after umrah'))
