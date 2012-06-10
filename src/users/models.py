@@ -79,12 +79,21 @@ class Notification(models.Model):
             (TWELVTH, _('twelvth')),
             (THIRTEENTH, _('thirteenth')),
             )
+    TAMATTO3 = 0
+    EFRAD = 1
+    KERAN= 2
+    HAJJ_TYPES = (
+                  (TAMATTO3, _('tamato3')),
+                  (EFRAD, _('efrad')),
+                  (KERAN, _('keran')),
+                  )
     
     title = models.CharField(_('title'), max_length=60, db_index=True)
     message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
 #    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
     category = models.IntegerField(_('category'), help_text=('it is relative to manasek start date'), choices=CATEGORIES)
     which_day = models.IntegerField(_('which day'), choices=DAYS)
+    hajj_type = models.IntegerField(_('hajj_type'), choices=HAJJ_TYPES, null=True)
     for_whom = models.IntegerField(_('for whom'), choices=WHOM, default=BOTH)
     time_interval = models.IntegerField(_('time interval in hours'), help_text=_('it depends on the category chosen'), null=True)
     lon = models.FloatField(_('longitude'), null=True, blank=True)
