@@ -93,7 +93,7 @@ class Notification(models.Model):
 #    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
     category = models.IntegerField(_('category'), help_text=('it is relative to manasek start date'), choices=CATEGORIES)
     which_day = models.IntegerField(_('which day'), choices=DAYS)
-    hajj_type = models.IntegerField(_('hajj_type'), choices=HAJJ_TYPES, null=True)
+    hajj_type = models.IntegerField(_('hajj_type'), choices=HAJJ_TYPES, null=True, blank=True)
     for_whom = models.IntegerField(_('for whom'), choices=WHOM, default=BOTH)
     time_interval = models.IntegerField(_('time interval in hours'), help_text=_('it depends on the category chosen'), null=True)
     lon = models.FloatField(_('longitude'), null=True, blank=True)
