@@ -47,7 +47,6 @@ class Services(ServicesRoot):
     def get_notifications_by_filters(self, kwargs):
         ''' params (token : String, kwargs : dict) '''
         notifications = Notification.objects.filter(**kwargs).values('id', 'title', 'message', 'for_whom')
-#        reformed_notifications = queryset_to_list_of_dicts(notifications)
         reformed_notifications = eval(notifications.__repr__())
         if reformed_notifications:
             return reformed_notifications
