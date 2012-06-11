@@ -128,7 +128,8 @@ def token_is_valid(token):
 def login(username, password):
     ''' params (username, password) '''
     from django.contrib.sessions.backends.db import SessionStore
-    user = auth.authenticate(username=username, password=password)
+    user = auth.authenticate(identification=username, password=password)
+#    import pdb; pdb.set_trace()
     if user: 
         session = SessionStore()
         session['user_id'] = user.id
