@@ -1,0 +1,62 @@
+.. nosok documentation master file, created by
+   sphinx-quickstart on Mon Jun 11 17:01:00 2012.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to nosok's documentation!
+=================================
+
+Contents:
+
+- Nosoky project is a python-based web application built on Django (web framework). 
+- the app structure is based on the MVC pattern.
+- the app mainly offers a web service interface rather than a graphical web interface.
+- the app can serve any client (desktop or mobile) that supports xmlrpc internal client .
+- the available services can be called on the following urls
+	- http://nosok.etafra.com/users/xmlrpc/call/<token> :
+		- this url exposes the following functions :
+			- get_notifications_by_location(lon, lat, delta) => list[notifications]
+			- get_notifications_by_date(after_date) => list[notifications]
+			- get_notifications_by_id(id) => notification
+			- get_notifications_by_filters({kwargs}) => list[notifications]
+				- hint: available filters:
+					categories{
+						MORAL_PREPARATION = 0,
+						PHYSICAL_PREPARATION = 1,
+						TRAVELING_DAY = 2,
+						IHRAM_HOW = 3,
+						IHRAM_TABOO = 4,
+						ENTERING_MEKKA = 5,
+						UMRAH = 6
+						}
+					for_whom{
+						BOTH = 0,
+						MALE = 1,
+						FEMALE = 2
+						}
+					days{
+						NOT_DEFINED = 0,
+						EIGHTH = 1,
+						NINTH = 2,
+						TENTH = 3,
+						ELEVNTH = 4,
+						TWELVTH = 5,
+						THIRTEENTH = 6
+						}
+		- get_notifications_by_category(self, category): => list[notifications] or ‘no notifications’
+		- get_notifications_by_for_whom(self, for_whom): => list[notifications] or ‘no notifications’
+		- get_notifications_by_which_day(self, which_day, hajj_type): => list[notifications] or ‘no notifications’
+
+.. toctree::
+   :maxdepth: 2
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+this is the documentation of nosok project
