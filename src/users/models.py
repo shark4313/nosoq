@@ -81,47 +81,54 @@ class Notification(models.Model):
             )
     TAMATTO3 = 0
     EFRAD = 1
-    KERAN= 2
+    KERAN = 2
     HAJJ_TYPES = (
                   (TAMATTO3, _('tamato3')),
                   (EFRAD, _('efrad')),
                   (KERAN, _('keran')),
                   )
-    
+
     title = models.CharField(_('title'), max_length=60, db_index=True)
-    message = models.TextField(_("Message"), max_length=1023,  help_text=_("Message sent to the person"))
+    title_en = models.CharField(_('title en'), max_length=60, db_index=True)
+    message = models.TextField(_("Message"), max_length=1023,
+                               help_text=_("Message sent to the person"))
+    message_en = models.TextField(_("Message en"), max_length=1023,
+                               help_text=_("Message sent to the person"))
 #    time = models.DateTimeField(_("Time"), help_text=_("When to send this message") , default=datetime.now())
-    category = models.IntegerField(_('category'), help_text=('it is relative to manasek start date'), choices=CATEGORIES)
+    category = models.IntegerField(_('category'),
+                                   help_text=('it is relative to manasek start date'), choices=CATEGORIES)
     which_day = models.IntegerField(_('which day'), choices=DAYS)
-    hajj_type = models.IntegerField(_('hajj_type'), choices=HAJJ_TYPES, null=True, blank=True)
+    hajj_type = models.IntegerField(_('hajj_type'), choices=HAJJ_TYPES,
+                                    null=True, blank=True)
     for_whom = models.IntegerField(_('for whom'), choices=WHOM, default=BOTH)
-    time_interval = models.IntegerField(_('time interval in hours'), help_text=_('it depends on the category chosen'), null=True)
+    time_interval = models.IntegerField(_('time interval in hours'),
+                                        help_text=_('it depends on the category chosen'), null=True)
     lon = models.FloatField(_('longitude'), null=True, blank=True)
     lat = models.FloatField(_('latitude'), null=True, blank=True)
-    
+
     class Meta:
         verbose_name = _('notification')
         verbose_name_plural = _('notifications')
-    
+
     def __unicode__(self):
         return self.title
-    
+
 #class News(models.Model):
 #    media =  models.ManyToManyField("Media" , blank=True)
 #    header = models.CharField(_("Header") , max_length=255 , blank=True , null= True)
 #    description = models.TextField(_("short description"), max_length=255, blank=True, null=True, help_text=_("short description of the image"))
 #    pub_date    = models.DateTimeField(_("Created in"),help_text=_("Created in") , default = datetime.now() , editable = False)
-#    
+#
 #    def __unicode__(self):
 #        return self.header
-#    
+#
 #    class Meta:
 #        verbose_name = _('News')
 #        verbose_name_plural = _('News')
 
-        
+
 class UserProfile(UserenaBaseProfile):
-    MALE= 0
+    MALE = 0
     FEMALE = 1
     GENDER = (
               (MALE, _('male')),
@@ -157,7 +164,7 @@ class UserProfile(UserenaBaseProfile):
     tahallol_day = models.IntegerField(_('tahallol day'), help_text=_('which day to do the great tahallol'), choices=DAYS, blank=True, null=True)
     mota3agel = models.BooleanField(_('mot3agel'), blank=True)
     sa3ayt = models.BooleanField(help_text=_('in case you are doing hajj_qeran, did you "sa3ayt" just after umrah'))
-    
+
     class Meta:
         verbose_name = _('Profile')
         verbose_name_plural = _('Profiles')
